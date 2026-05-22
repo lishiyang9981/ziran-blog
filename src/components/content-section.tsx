@@ -33,7 +33,7 @@ export function ContentSection({ posts }: { posts: Post[] }) {
       {/* ── Recent Articles ─────────────────── */}
       <motion.div
         {...FADE(0)}
-        className="rounded-[28px] border border-white/[0.07] bg-white/[0.02] p-8 backdrop-blur"
+        className="card-item rounded-[28px] border border-white/[0.07] bg-white/[0.02] p-8 backdrop-blur"
       >
         <div className="mb-7 flex items-center justify-between">
           <h2 className="text-[22px] font-semibold text-white">近期文章</h2>
@@ -65,10 +65,10 @@ export function ContentSection({ posts }: { posts: Post[] }) {
                     /* 无封面时的装饰占位 */
                     <div className="flex h-full w-full flex-col items-start justify-end p-2.5">
                       <div className="mb-1.5 space-y-1 w-full">
-                        <div className="h-[2px] w-10 rounded-full bg-white/20" />
-                        <div className="h-[2px] w-7 rounded-full bg-white/12" />
+                        <div className="thumb-line h-[2px] w-10 rounded-full bg-white/20" />
+                        <div className="thumb-line h-[2px] w-7 rounded-full bg-white/12" />
                       </div>
-                      <p className="line-clamp-2 text-[9px] font-medium leading-tight text-white/40">
+                      <p className="thumb-title line-clamp-2 text-[9px] font-medium leading-tight text-white/40">
                         {post.title}
                       </p>
                     </div>
@@ -81,7 +81,7 @@ export function ContentSection({ posts }: { posts: Post[] }) {
                   <p className="mt-1 line-clamp-1 text-sm text-zinc-600">{post.description}</p>
                   <div className="mt-2.5 flex flex-wrap gap-1.5">
                     {post.tags?.slice(0, 3).map((tag) => (
-                      <span key={tag} className="rounded-full border border-white/[0.08] px-2.5 py-0.5 text-[11px] text-zinc-500">
+                      <span key={tag} className="tag-chip rounded-full border border-white/[0.08] px-2.5 py-0.5 text-[11px] text-zinc-500">
                         {tag}
                       </span>
                     ))}
@@ -97,7 +97,7 @@ export function ContentSection({ posts }: { posts: Post[] }) {
       {/* ── AI Lab ──────────────────────────── */}
       <motion.div
         {...FADE(0.1)}
-        className="overflow-hidden rounded-[28px] border border-white/[0.07] bg-white/[0.02] p-8 backdrop-blur"
+        className="card-item overflow-hidden rounded-[28px] border border-white/[0.07] bg-white/[0.02] p-8 backdrop-blur"
       >
         <div className="mb-7 flex items-center justify-between">
           <h2 className="text-[22px] font-semibold text-white">AI Lab</h2>
@@ -106,7 +106,7 @@ export function ContentSection({ posts }: { posts: Post[] }) {
           </Link>
         </div>
 
-        <div className="relative mb-7 flex h-[200px] items-center justify-center overflow-hidden rounded-[20px] border border-white/[0.07] bg-black/20">
+        <div className="card-item relative mb-7 flex h-[200px] items-center justify-center overflow-hidden rounded-[20px] border border-white/[0.07] bg-black/20">
           <div className="absolute h-36 w-36 rounded-full bg-purple-500/20 blur-3xl" />
           <div
             className="relative h-28 w-28 rounded-full"
@@ -131,7 +131,7 @@ export function ContentSection({ posts }: { posts: Post[] }) {
             >
               <Link
                 href="/lab"
-                className="flex items-center justify-between rounded-xl border border-white/[0.07] bg-white/[0.02] px-4 py-3.5 transition-all duration-300 hover:bg-white/[0.04]"
+                className="card-item flex items-center justify-between rounded-xl border border-white/[0.07] bg-white/[0.02] px-4 py-3.5 transition-all duration-300 hover:bg-white/[0.04]"
               >
                 <div>
                   <p className="text-sm font-medium text-zinc-200">{item.title}</p>

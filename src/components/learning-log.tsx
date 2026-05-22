@@ -16,7 +16,7 @@ export function LearningLog({ notes }: { notes: Note[] }) {
 
   return (
     <section className="relative z-10 mx-auto max-w-[1400px] px-8 pb-6">
-      <div className="rounded-[28px] border border-white/[0.07] bg-white/[0.02] p-8 backdrop-blur">
+      <div className="card-item rounded-[28px] border border-white/[0.07] bg-white/[0.02] p-8 backdrop-blur">
 
         {/* Header */}
         <div className="mb-7 flex items-center justify-between">
@@ -34,14 +34,14 @@ export function LearningLog({ notes }: { notes: Note[] }) {
             <button
               onClick={() => setOffset(Math.max(0, offset - 1))}
               disabled={offset === 0}
-              className="flex h-7 w-7 items-center justify-center rounded-full border border-white/10 text-zinc-600 transition hover:border-white/20 hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
+              className="tag-chip flex h-7 w-7 items-center justify-center rounded-full border border-white/10 text-zinc-600 transition hover:border-white/20 hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
             >
               <ChevronLeft className="h-3.5 w-3.5" />
             </button>
             <button
               onClick={() => setOffset(Math.min(maxOffset, offset + 1))}
               disabled={offset >= maxOffset}
-              className="flex h-7 w-7 items-center justify-center rounded-full border border-white/10 text-zinc-600 transition hover:border-white/20 hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
+              className="tag-chip flex h-7 w-7 items-center justify-center rounded-full border border-white/10 text-zinc-600 transition hover:border-white/20 hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
             >
               <ChevronRight className="h-3.5 w-3.5" />
             </button>
@@ -61,7 +61,7 @@ export function LearningLog({ notes }: { notes: Note[] }) {
                   className={`h-2 w-2 rounded-full border transition-all duration-300 ${
                     active
                       ? "border-purple-500/60 bg-purple-500/40 shadow-[0_0_8px_rgba(168,85,247,0.6)]"
-                      : "border-white/10 bg-[#050505] hover:border-white/20"
+                      : "timeline-dot border-white/10 bg-[#050505] hover:border-white/20"
                   }`}
                 />
               );
@@ -75,7 +75,7 @@ export function LearningLog({ notes }: { notes: Note[] }) {
             <Link
               key={note.slug}
               href={`/notes/${note.slug}`}
-              className="group rounded-2xl border border-white/[0.07] bg-white/[0.02] p-5 transition-all duration-300 hover:border-white/10 hover:bg-white/[0.04]"
+              className="card-item group rounded-2xl border border-white/[0.07] bg-white/[0.02] p-5 transition-all duration-300 hover:border-white/10 hover:bg-white/[0.04]"
             >
               <h3 className="text-[15px] font-medium leading-snug text-white line-clamp-2">
                 {note.title}
@@ -87,7 +87,7 @@ export function LearningLog({ notes }: { notes: Note[] }) {
                 {note.tags?.slice(0, 2).map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-white/[0.08] px-2.5 py-0.5 text-[11px] text-zinc-600"
+                    className="tag-chip rounded-full border border-white/[0.08] px-2.5 py-0.5 text-[11px] text-zinc-600"
                   >
                     {tag}
                   </span>

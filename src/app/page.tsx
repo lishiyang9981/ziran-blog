@@ -13,10 +13,10 @@ export default function Home() {
   const notes = getAllNotes().slice(0, 8);
 
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[#050505] text-white">
+    <main className="page-bg relative min-h-screen overflow-x-hidden bg-[#050505] text-white">
 
       {/* Background grid */}
-      <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(rgba(255,255,255,0.018)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.018)_1px,transparent_1px)] bg-[size:80px_80px]" />
+      <div className="page-grid pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(rgba(255,255,255,0.018)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.018)_1px,transparent_1px)] bg-[size:80px_80px]" />
 
       <Navbar />
 

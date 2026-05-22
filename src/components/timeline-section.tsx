@@ -12,7 +12,7 @@ export function TimelineSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
-        className="relative overflow-hidden rounded-[28px] border border-white/[0.07] bg-white/[0.02] px-8 py-20 text-center backdrop-blur"
+        className="card-item relative overflow-hidden rounded-[28px] border border-white/[0.07] bg-white/[0.02] px-8 py-20 text-center backdrop-blur"
       >
         <div className="absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-500/[0.07] blur-3xl" />
         <div className="relative z-10">
@@ -34,7 +34,7 @@ export function TimelineSection() {
         transition={{ duration: 0.6, delay: 0.2 }}
         className="pb-10 pt-12"
       >
-        <div className="flex flex-col items-center justify-between gap-6 border-t border-white/[0.07] pt-8 sm:flex-row">
+        <div className="theme-border flex flex-col items-center justify-between gap-6 border-t border-white/[0.07] pt-8 sm:flex-row">
           <div>
             <p className="text-sm font-semibold tracking-[0.2em] text-zinc-300">
               CWR&amp;L

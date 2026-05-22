@@ -80,7 +80,7 @@ function TiltCard({
     >
       <Link
         href={href}
-        className="group relative block overflow-hidden rounded-[22px] border border-white/[0.07] bg-white/[0.02] p-6 backdrop-blur transition-all duration-300 hover:border-white/12"
+        className="card-item group relative block overflow-hidden rounded-[22px] border border-white/[0.07] bg-white/[0.02] p-6 backdrop-blur transition-all duration-300 hover:border-white/12"
       >
         <div
           className={`absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-gradient-to-br ${glow}`}

@@ -105,8 +105,9 @@ body {
   border-color: rgba(82,166,108,0.35) !important;
 }
 
-/* 标签徽章 */
-[data-theme="light"] .tag-chip {
+/* 仅边框颜色（导航按钮、分割线等） */
+[data-theme="light"] .tag-chip,
+[data-theme="light"] .theme-border {
   border-color: rgba(82,166,108,0.3) !important;
 }
 
@@ -115,6 +116,33 @@ body {
   background-color: rgba(82,166,108,0.18) !important;
   color: #2d7a46 !important;
 }
+
+/* ── 缩略图占位文字（暗色 white/xx 在亮背景上不可见）── */
+[data-theme="light"] .thumb-line  { background-color: rgba(30, 50, 30, 0.28) !important; }
+[data-theme="light"] .thumb-title { color: rgba(30, 50, 30, 0.62) !important; }
+
+/* ── Hero 区域 ── */
+[data-theme="light"] .hero-badge {
+  border-color: rgba(82,166,108,0.3) !important;
+  background-color: rgba(82,166,108,0.09) !important;
+}
+[data-theme="light"] .hero-cta {
+  border-color: rgba(82,166,108,0.4) !important;
+  color: #1a2a18 !important;
+}
+[data-theme="light"] .hero-cta:hover {
+  background-color: rgba(82,166,108,0.1) !important;
+  border-color: rgba(82,166,108,0.6) !important;
+}
+
+/* ── 时间轴圆点（非激活态背景与暗色一致，亮色需换成页面底色）── */
+[data-theme="light"] .timeline-dot {
+  background-color: #f4f7f0 !important;
+  border-color: rgba(82,166,108,0.32) !important;
+}
+
+/* ── 星点（暗色主题是白点，亮色改成深绿小点）── */
+[data-theme="light"] .star { background-color: rgba(30, 50, 30, 0.35) !important; }
 
 /* ── MDX 文章内容 (prose-invert → light prose) ── */
 [data-theme="light"] .prose-invert {

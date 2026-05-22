@@ -54,10 +54,10 @@ export default function BlogPage() {
                 ) : (
                   <div className="flex h-full w-full flex-col items-start justify-end p-2.5">
                     <div className="mb-1.5 w-full space-y-1">
-                      <div className="h-[2px] w-10 rounded-full bg-white/20" />
-                      <div className="h-[2px] w-7 rounded-full bg-white/12" />
+                      <div className="thumb-line h-[2px] w-10 rounded-full bg-white/20" />
+                      <div className="thumb-line h-[2px] w-7 rounded-full bg-white/12" />
                     </div>
-                    <p className="line-clamp-2 text-[9px] font-medium leading-tight text-white/40">{post.title}</p>
+                    <p className="thumb-title line-clamp-2 text-[9px] font-medium leading-tight text-white/40">{post.title}</p>
                   </div>
                 )}
               </div>

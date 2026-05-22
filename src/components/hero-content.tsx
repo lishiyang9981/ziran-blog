@@ -16,7 +16,7 @@ export function HeroContent() {
       {/* Badge */}
       <motion.div
         {...FADE_UP(0)}
-        className="mb-8 flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-xs text-zinc-400 backdrop-blur"
+        className="hero-badge mb-8 flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-xs text-zinc-400 backdrop-blur"
       >
         <span className="h-1.5 w-1.5 rounded-full bg-green-400 shadow-[0_0_6px_rgba(74,222,128,0.8)]" />
         自然向晚，只取一朵紫云~
@@ -54,7 +54,7 @@ export function HeroContent() {
       <motion.div {...FADE_UP(0.45)}>
         <Link
           href="/blog"
-          className="mt-10 flex w-fit items-center gap-3 rounded-full border border-white/20 px-6 py-3 text-sm text-white transition-all duration-300 hover:border-white/30 hover:bg-white/[0.05]"
+          className="hero-cta mt-10 flex w-fit items-center gap-3 rounded-full border border-white/20 px-6 py-3 text-sm text-white transition-all duration-300 hover:border-white/30 hover:bg-white/[0.05]"
         >
           探索我的数字花园
           <span className="text-zinc-500">→</span>
