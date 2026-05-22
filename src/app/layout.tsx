@@ -23,7 +23,7 @@ export default function RootLayout({
 
   return (
     <html lang="zh-CN">
-      <body className={inter.className}>
+      <body className={`${inter.className} accent-hue`}>
         <MouseGlow />
         <SearchModal posts={posts} notes={notes} />
         {children}
