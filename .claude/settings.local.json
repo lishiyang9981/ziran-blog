@@ -17,7 +17,14 @@
       "Bash(pnpm add *)",
       "Bash(npm install *)",
       "Bash(npx vercel *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(vercel --yes --prod)",
+      "Bash(pnpm build *)",
+      "Bash(git commit -m 'fix: 修复 hero-content ease 类型错误 *)",
+      "Bash(git commit -m 'chore: 更新 hero badge 文案 *)",
+      "Bash(git commit -m 'feat: 美化顶部卡片图标与文章缩略图占位 *)",
+      "Bash(git commit -m 'chore: 新建 public/images 文件夹用于存放文章封面图 *)",
+      "Bash(git commit -m 'feat: 关于我页面添加头像图片，优化两栏布局 *)"
     ]
   }
 }

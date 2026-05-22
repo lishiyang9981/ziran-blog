@@ -20,7 +20,7 @@ export default function AboutPage() {
           >
             <p className="mb-3 text-xs tracking-[0.35em] text-zinc-600">ABOUT</p>
             <h1 className="mb-8 bg-gradient-to-b from-white to-zinc-500 bg-clip-text text-6xl font-semibold tracking-tight text-transparent">
-              关于我
+              关于我们
             </h1>
             <div className="space-y-5 text-[15px] leading-8 text-zinc-400">
               <p>探索者 · 思考者 · INFP。</p>
