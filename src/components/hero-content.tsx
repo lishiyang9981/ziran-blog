@@ -11,7 +11,7 @@ const FADE_UP = (delay = 0) => ({
 
 export function HeroContent() {
   return (
-    <div className="flex w-[45%] flex-col justify-center">
+    <div className="hero-text-glass relative z-10 flex w-full flex-col justify-center lg:w-[45%]">
 
       {/* Badge */}
       <motion.div

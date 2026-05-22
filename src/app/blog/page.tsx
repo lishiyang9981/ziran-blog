@@ -44,10 +44,10 @@ export default function BlogPage() {
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="card-item group flex items-center gap-6 rounded-[24px] border border-white/[0.07] bg-white/[0.02] p-6 backdrop-blur-sm transition-all duration-300 hover:border-purple-500/20 hover:bg-white/[0.03]"
+              className="card-item group flex flex-col gap-4 rounded-[24px] border border-white/[0.07] bg-white/[0.02] p-4 backdrop-blur-sm transition-all duration-300 hover:border-purple-500/20 hover:bg-white/[0.03] sm:flex-row sm:items-center sm:gap-6 sm:p-6"
             >
               {/* Thumbnail */}
-              <div className={`relative h-[80px] w-[128px] flex-shrink-0 overflow-hidden rounded-xl bg-gradient-to-br ${COVER_GRADIENTS[i % COVER_GRADIENTS.length]}`}>
+              <div className={`relative h-[160px] w-full flex-shrink-0 overflow-hidden rounded-xl bg-gradient-to-br sm:h-[80px] sm:w-[128px] ${COVER_GRADIENTS[i % COVER_GRADIENTS.length]}`}>
                 {post.cover ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img src={post.cover} alt={post.title} className="h-full w-full object-cover" />
@@ -63,8 +63,11 @@ export default function BlogPage() {
               </div>
 
               <div className="min-w-0 flex-1">
-                <h2 className="text-xl font-semibold text-white transition-colors group-hover:text-zinc-100">{post.title}</h2>
-                <p className="mt-2 text-sm text-zinc-500">{post.description}</p>
+                <div className="flex items-start justify-between gap-3">
+                  <h2 className="min-w-0 text-lg font-semibold text-white transition-colors group-hover:text-zinc-100 sm:text-xl">{post.title}</h2>
+                  <span className="flex-shrink-0 text-xs text-zinc-600 sm:text-sm">{post.date}</span>
+                </div>
+                <p className="mt-2 line-clamp-2 text-sm text-zinc-500">{post.description}</p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {post.tags?.map((tag) => (
                     <span key={tag} className="tag-chip rounded-full border border-white/[0.08] px-3 py-0.5 text-xs text-zinc-500">
@@ -73,8 +76,6 @@ export default function BlogPage() {
                   ))}
                 </div>
               </div>
-
-              <div className="flex-shrink-0 text-sm text-zinc-600">{post.date}</div>
             </Link>
           ))}
         </div>

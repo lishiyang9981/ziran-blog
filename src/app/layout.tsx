@@ -6,6 +6,7 @@ import { Inter } from "next/font/google";
 import { MouseGlow }    from "@/components/mouse-glow";
 import { SearchModal }  from "@/components/search-modal";
 import { RightSidebar } from "@/components/right-sidebar";
+import { BackToTop }    from "@/components/back-to-top";
 import { getAllPosts }   from "@/lib/posts";
 import { getAllNotes }   from "@/lib/notes";
 
@@ -37,6 +38,7 @@ export default function RootLayout({
         <MouseGlow />
         <SearchModal posts={posts} notes={notes} />
         <RightSidebar />
+        <BackToTop />
         {children}
       </body>
     </html>

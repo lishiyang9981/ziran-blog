@@ -53,10 +53,10 @@ export function ContentSection({ posts }: { posts: Post[] }) {
             >
               <Link
                 href={`/blog/${post.slug}`}
-                className="group flex items-center gap-5 rounded-2xl border border-transparent p-3 transition-all duration-300 hover:border-white/[0.06] hover:bg-white/[0.02]"
+                className="group flex flex-col gap-3 rounded-2xl border border-transparent p-3 transition-all duration-300 hover:border-white/[0.06] hover:bg-white/[0.02] sm:flex-row sm:items-center sm:gap-5"
               >
                 <div
-                  className={`relative h-[80px] w-[128px] flex-shrink-0 overflow-hidden rounded-xl bg-gradient-to-br ${COVER_GRADIENTS[i % COVER_GRADIENTS.length]}`}
+                  className={`relative h-[150px] w-full flex-shrink-0 overflow-hidden rounded-xl bg-gradient-to-br sm:h-[80px] sm:w-[128px] ${COVER_GRADIENTS[i % COVER_GRADIENTS.length]}`}
                 >
                   {post.cover ? (
                     // eslint-disable-next-line @next/next/no-img-element
@@ -75,10 +75,13 @@ export function ContentSection({ posts }: { posts: Post[] }) {
                   )}
                 </div>
                 <div className="min-w-0 flex-1">
-                  <h3 className="truncate text-[16px] font-medium text-white group-hover:text-zinc-100">
-                    {post.title}
-                  </h3>
-                  <p className="mt-1 line-clamp-1 text-sm text-zinc-600">{post.description}</p>
+                  <div className="flex items-start justify-between gap-3">
+                    <h3 className="min-w-0 text-[16px] font-medium text-white group-hover:text-zinc-100 sm:truncate">
+                      {post.title}
+                    </h3>
+                    <span className="flex-shrink-0 text-xs text-zinc-600">{post.date}</span>
+                  </div>
+                  <p className="mt-1 line-clamp-2 text-sm text-zinc-600 sm:line-clamp-1">{post.description}</p>
                   <div className="mt-2.5 flex flex-wrap gap-1.5">
                     {post.tags?.slice(0, 3).map((tag) => (
                       <span key={tag} className="tag-chip rounded-full border border-white/[0.08] px-2.5 py-0.5 text-[11px] text-zinc-500">
@@ -87,7 +90,6 @@ export function ContentSection({ posts }: { posts: Post[] }) {
                     ))}
                   </div>
                 </div>
-                <div className="flex-shrink-0 text-xs text-zinc-600">{post.date}</div>
               </Link>
             </motion.div>
           ))}

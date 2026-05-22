@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Search } from "lucide-react";
+import { Search, Menu, X } from "lucide-react";
 
 const NAV_ITEMS = [
   { label: "首页",   href: "/" },
@@ -21,8 +21,9 @@ const THEMES = [
 
 export function Navbar() {
   const pathname  = usePathname();
-  const [scrolled, setScrolled] = useState(false);
-  const [themeId,  setThemeId]  = useState("dark");
+  const [scrolled,  setScrolled]  = useState(false);
+  const [themeId,   setThemeId]   = useState("dark");
+  const [menuOpen,  setMenuOpen]  = useState(false);
 
   /* 读取已保存主题 */
   useEffect(() => {
@@ -30,6 +31,9 @@ export function Navbar() {
     setThemeId(saved);
     document.documentElement.setAttribute("data-theme", saved);
   }, []);
+
+  /* 路由变化时关闭移动菜单 */
+  useEffect(() => { setMenuOpen(false); }, [pathname]);
 
   /* 滚动检测 */
   useEffect(() => {
@@ -39,8 +43,7 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
-  const openSearch = () =>
-    window.dispatchEvent(new CustomEvent("open-search"));
+  const openSearch = () => window.dispatchEvent(new CustomEvent("open-search"));
 
   const toggleTheme = () => {
     const next = themeId === "dark" ? "light" : "dark";
@@ -51,9 +54,15 @@ export function Navbar() {
 
   const currentTheme = THEMES.find(t => t.id === themeId) ?? THEMES[0];
 
+  /* 移动菜单背景样式（复用胶囊样式） */
+  const menuBg = themeId === "light"
+    ? "border-black/[0.08] bg-white/92"
+    : "border-white/[0.12] bg-[#050505]/88";
+
   return (
-    /* 整行固定，内容居中，pointer-events-none 让外层不拦截点击 */
-    <header className="pointer-events-none fixed left-0 right-0 top-3 z-50 flex justify-center px-4">
+    <header className="pointer-events-none fixed left-0 right-0 top-3 z-50 flex flex-col items-center gap-2 px-4">
+
+      {/* ── 主导航胶囊 ── */}
       <div
         className={`pointer-events-auto flex items-center gap-4 transition-all duration-500 ${
           scrolled
@@ -73,19 +82,16 @@ export function Navbar() {
           </span>
         </Link>
 
-        {/* 导航链接 */}
+        {/* 导航链接（桌面端） */}
         <nav className="hidden flex-1 items-center justify-center gap-0.5 md:flex">
           {NAV_ITEMS.map(({ label, href }) => {
-            const active =
-              href === "/" ? pathname === "/" : pathname.startsWith(href);
+            const active = href === "/" ? pathname === "/" : pathname.startsWith(href);
             return (
               <Link
                 key={href}
                 href={href}
                 className={`relative rounded-full px-3.5 py-1.5 text-sm transition-colors duration-200 ${
-                  active
-                    ? "text-white"
-                    : "text-zinc-500 hover:text-zinc-200"
+                  active ? "text-white" : "text-zinc-500 hover:text-zinc-200"
                 }`}
               >
                 {label}
@@ -107,26 +113,64 @@ export function Navbar() {
             <span className="hidden text-[11px] lg:inline">⌘K</span>
           </button>
 
-          {/* 两态主题切换按钮 */}
+          {/* 主题切换 */}
           <button
             onClick={toggleTheme}
-            title={`切换到${currentTheme.id === "dark" ? "云朵" : "紫色"}主题`}
+            title={`切换到${currentTheme.id === "dark" ? "自然" : "暗色"}主题`}
             className="group relative flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] transition hover:border-white/20"
           >
             <span
               className="h-3 w-3 rounded-full transition-all duration-300 group-hover:scale-110"
-              style={{
-                backgroundColor: currentTheme.dot,
-                boxShadow: `0 0 8px ${currentTheme.dot}bb`,
-              }}
+              style={{ backgroundColor: currentTheme.dot, boxShadow: `0 0 8px ${currentTheme.dot}bb` }}
             />
-            {/* tooltip */}
             <span className="pointer-events-none absolute -bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-zinc-900 px-2 py-0.5 text-[10px] text-zinc-400 opacity-0 transition-opacity group-hover:opacity-100">
               {currentTheme.title}
             </span>
           </button>
+
+          {/* 汉堡菜单（仅移动端可见） */}
+          <button
+            onClick={() => setMenuOpen(o => !o)}
+            aria-label="导航菜单"
+            className="md:hidden flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-zinc-500 transition hover:border-white/20 hover:text-white"
+          >
+            {menuOpen
+              ? <X className="h-4 w-4" />
+              : <Menu className="h-4 w-4" />}
+          </button>
         </div>
       </div>
+
+      {/* ── 移动端下拉菜单 ── */}
+      {menuOpen && (
+        <div
+          className={`pointer-events-auto w-full max-w-[200px] overflow-hidden rounded-2xl border py-1.5 shadow-xl backdrop-blur-2xl ${menuBg}`}
+        >
+          {NAV_ITEMS.map(({ label, href }) => {
+            const active = href === "/" ? pathname === "/" : pathname.startsWith(href);
+            return (
+              <Link
+                key={href}
+                href={href}
+                onClick={() => setMenuOpen(false)}
+                className={`flex items-center gap-2.5 px-4 py-2.5 text-sm transition-colors ${
+                  active
+                    ? "font-medium text-white"
+                    : "text-zinc-500 hover:text-zinc-300"
+                }`}
+              >
+                <span
+                  className={`h-1.5 w-1.5 flex-shrink-0 rounded-full transition-all ${
+                    active ? "bg-purple-400" : "bg-transparent"
+                  }`}
+                />
+                {label}
+              </Link>
+            );
+          })}
+        </div>
+      )}
+
     </header>
   );
 }

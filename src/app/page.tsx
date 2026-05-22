@@ -22,21 +22,26 @@ export default function Home() {
       <Navbar />
 
       {/* ── Hero ──────────────────────────────── */}
-      <section className="relative z-10 flex min-h-screen items-center">
-        <div className="mx-auto flex w-full max-w-[1400px] items-center px-8">
+      <section className="relative z-10 overflow-hidden lg:min-h-screen">
+        {/*
+          移动端：grid 叠层 —— 视觉在后、文字卡片在前（同一个 grid 单元格），高度随内容自适应
+          桌面端：flex 左右并排（lg:flex 覆盖 grid，order-* 保证左文右图）
+        */}
+        <div className="mx-auto grid w-full grid-cols-1 lg:flex lg:min-h-screen lg:max-w-[1400px] lg:items-center lg:px-8">
 
-          {/* Left — animated headline */}
-          <HeroContent />
-
-          {/* Right — Hero Visual（暗色=星球，亮色=蓝天白云） */}
-          <div className="relative flex w-[55%] items-center justify-center">
+          {/* 视觉层 — 移动端垫底，桌面端右侧 */}
+          <div className="col-start-1 row-start-1 flex items-start justify-center pt-14
+                          lg:order-2 lg:w-[55%] lg:items-center lg:pt-0">
             <HeroVisual />
           </div>
 
+          {/* 文字层 — 移动端浮于图片之上，桌面端左侧 */}
+          <div className="col-start-1 row-start-1 z-10 px-5 pb-10 pt-20
+                          lg:order-1 lg:w-[45%] lg:px-0 lg:pb-0 lg:pt-0">
+            <HeroContent />
+          </div>
+
         </div>
-
-        {/* 右侧边栏已移至 layout 的 <RightSidebar />（fixed 定位，全局可见）*/}
-
       </section>
 
       <TopCards />
