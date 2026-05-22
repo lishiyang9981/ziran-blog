@@ -10,6 +10,8 @@ const CARDS = [
     desc: "技术文章与思考笔记",
     icon: FileText,
     glow: "from-blue-500/20 to-cyan-500/10",
+    iconBg: "from-blue-500/30 to-cyan-500/20",
+    iconColor: "text-blue-300",
     href: "/blog",
   },
   {
@@ -17,6 +19,8 @@ const CARDS = [
     desc: "记录每一次学习与成长",
     icon: BookOpen,
     glow: "from-green-500/20 to-emerald-500/10",
+    iconBg: "from-green-500/30 to-emerald-500/20",
+    iconColor: "text-emerald-300",
     href: "/notes",
   },
   {
@@ -24,6 +28,8 @@ const CARDS = [
     desc: "一些有趣的尝试与实践",
     icon: FolderOpen,
     glow: "from-purple-500/20 to-fuchsia-500/10",
+    iconBg: "from-purple-500/30 to-fuchsia-500/20",
+    iconColor: "text-purple-300",
     href: "/projects",
   },
   {
@@ -31,6 +37,8 @@ const CARDS = [
     desc: "探索 AI 与未来的可能性",
     icon: FlaskConical,
     glow: "from-pink-500/20 to-purple-500/10",
+    iconBg: "from-pink-500/30 to-purple-500/20",
+    iconColor: "text-pink-300",
     href: "/lab",
   },
 ];
@@ -40,6 +48,8 @@ function TiltCard({
   desc,
   icon: Icon,
   glow,
+  iconBg,
+  iconColor,
   href,
   index,
 }: (typeof CARDS)[0] & { index: number }) {
@@ -75,9 +85,9 @@ function TiltCard({
         <div
           className={`absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-gradient-to-br ${glow}`}
         />
-        <div className="relative z-10 mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-black/30">
+        <div className={`relative z-10 mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br ${iconBg} transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg`}>
           <Icon
-            className="h-[18px] w-[18px] text-zinc-500 transition duration-300 group-hover:text-zinc-200"
+            className={`h-6 w-6 ${iconColor} transition duration-300`}
             strokeWidth={1.5}
           />
         </div>

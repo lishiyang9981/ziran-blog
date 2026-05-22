@@ -56,11 +56,22 @@ export function ContentSection({ posts }: { posts: Post[] }) {
                 className="group flex items-center gap-5 rounded-2xl border border-transparent p-3 transition-all duration-300 hover:border-white/[0.06] hover:bg-white/[0.02]"
               >
                 <div
-                  className={`h-[80px] w-[128px] flex-shrink-0 overflow-hidden rounded-xl bg-gradient-to-br ${COVER_GRADIENTS[i % COVER_GRADIENTS.length]}`}
+                  className={`relative h-[80px] w-[128px] flex-shrink-0 overflow-hidden rounded-xl bg-gradient-to-br ${COVER_GRADIENTS[i % COVER_GRADIENTS.length]}`}
                 >
-                  {post.cover && (
+                  {post.cover ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img src={post.cover} alt={post.title} className="h-full w-full object-cover" />
+                  ) : (
+                    /* 无封面时的装饰占位 */
+                    <div className="flex h-full w-full flex-col items-start justify-end p-2.5">
+                      <div className="mb-1.5 space-y-1 w-full">
+                        <div className="h-[2px] w-10 rounded-full bg-white/20" />
+                        <div className="h-[2px] w-7 rounded-full bg-white/12" />
+                      </div>
+                      <p className="line-clamp-2 text-[9px] font-medium leading-tight text-white/40">
+                        {post.title}
+                      </p>
+                    </div>
                   )}
                 </div>
                 <div className="min-w-0 flex-1">
