@@ -2,29 +2,37 @@
 
 @plugin "@tailwindcss/typography";
 
-/* ── 主题变量 ── */
+/* ── 主题色变量（不使用 filter，避免破坏 fixed 定位）── */
 :root {
-  --hue: 0deg;   /* 紫色主题：不旋转 */
+  --accent-rgb: 168, 85, 247;   /* 紫色主题 */
+  --accent: rgb(168, 85, 247);
 }
 
 [data-theme="cloud"] {
-  --hue: -70deg; /* 云朵主题：紫 → 天空蓝 */
+  --accent-rgb: 56, 189, 248;   /* 云朵/天空蓝主题 */
+  --accent: rgb(56, 189, 248);
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-/* 整页色调旋转（黑白灰饱和度为0，不受影响；头像通过 .no-hue 抵消） */
-.accent-hue {
-  filter: hue-rotate(var(--hue));
-  transition: filter 0.5s ease;
-}
-
-/* 抵消头像上的色调旋转，保持照片原色 */
-[data-theme="cloud"] .no-hue {
-  filter: hue-rotate(70deg);
-}
+/* ── 云朵主题：覆盖关键 Tailwind 紫色类 ── */
+[data-theme="cloud"] .bg-purple-400                 { background-color: #38bdf8; }
+[data-theme="cloud"] .bg-purple-500\/20             { background-color: rgba(56,189,248,.20); }
+[data-theme="cloud"] .bg-purple-500\/\[0\.07\]      { background-color: rgba(56,189,248,.07); }
+[data-theme="cloud"] .bg-purple-600\/10             { background-color: rgba(56,189,248,.10); }
+[data-theme="cloud"] .text-purple-300               { color: #7dd3fc; }
+[data-theme="cloud"] .text-purple-400               { color: #38bdf8; }
+[data-theme="cloud"] .text-purple-500               { color: #0ea5e9; }
+[data-theme="cloud"] .border-purple-500\/40         { border-color: rgba(56,189,248,.40); }
+[data-theme="cloud"] .from-purple-300               { --tw-gradient-from: #7dd3fc; }
+[data-theme="cloud"] .from-purple-500\/20           { --tw-gradient-from: rgba(56,189,248,.20); }
+[data-theme="cloud"] .to-purple-500                 { --tw-gradient-to: #0ea5e9; }
+[data-theme="cloud"] .to-fuchsia-500\/10            { --tw-gradient-to: rgba(56,189,248,.10); }
+[data-theme="cloud"] .via-purple-400                { --tw-gradient-via: #38bdf8; }
+[data-theme="cloud"] .from-pink-500\/20             { --tw-gradient-from: rgba(56,189,248,.20); }
+[data-theme="cloud"] .to-purple-500\/10             { --tw-gradient-to: rgba(56,189,248,.10); }
 
 body {
   background: #050505;

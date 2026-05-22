@@ -7,11 +7,6 @@ import { TimelineSection } from "@/components/timeline-section";
 import { getAllPosts } from "@/lib/posts";
 import { getAllNotes } from "@/lib/notes";
 
-const STATUS_ITEMS = [
-  { label: "探索中", active: true },
-  { label: "构建中", active: false },
-  { label: "思考中", active: false },
-];
 
 export default function Home() {
   const posts = getAllPosts().slice(0, 4);
@@ -94,26 +89,7 @@ export default function Home() {
 
         </div>
 
-        {/* Right sidebar status */}
-        <div className="absolute right-8 top-1/2 hidden -translate-y-1/2 flex-col items-center gap-5 xl:flex">
-          <p className="text-[9px] tracking-[0.35em] text-zinc-600">NOW</p>
-          <div className="flex flex-col gap-4">
-            {STATUS_ITEMS.map((s) => (
-              <div key={s.label} className="flex items-center gap-2.5">
-                <div className={`h-1.5 w-1.5 rounded-full transition-all ${s.active ? "bg-purple-400 shadow-[0_0_6px_rgba(168,85,247,0.9)]" : "bg-zinc-700"}`} />
-                <span className={`text-[11px] ${s.active ? "text-zinc-300" : "text-zinc-600"}`}>
-                  {s.label}
-                </span>
-              </div>
-            ))}
-          </div>
-          <div className="mt-6 flex flex-col items-center gap-2.5">
-            <p className="text-[9px] tracking-[0.35em] text-zinc-600">SCROLL</p>
-            <div className="flex h-7 w-[18px] items-start justify-center rounded-full border border-zinc-700 pt-1">
-              <div className="h-1 w-px animate-bounce rounded-full bg-zinc-500" />
-            </div>
-          </div>
-        </div>
+        {/* 右侧边栏已移至 layout 的 <RightSidebar />（fixed 定位，全局可见）*/}
 
       </section>
 

@@ -49,7 +49,7 @@ export default function AboutPage() {
               <img
                 src="/images/avatar.jpg"
                 alt=""
-                className="no-hue h-auto w-full object-cover"
+                className="h-auto w-full object-cover"
               />
               {/* 底部融合遮罩 */}
               <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-[#050505]/50 to-transparent" />

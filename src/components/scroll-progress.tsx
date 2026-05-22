@@ -17,8 +17,12 @@ export function ScrollProgress() {
 
   return (
     <div
-      className="fixed left-0 top-0 z-[200] h-[2px] bg-gradient-to-r from-purple-500 via-purple-400 to-purple-300"
-      style={{ width: `${progress}%`, transition: "width 60ms linear" }}
+      className="fixed left-0 top-0 z-[200] h-[2px]"
+      style={{
+        width: `${progress}%`,
+        transition: "width 60ms linear",
+        background: `linear-gradient(to right, rgba(var(--accent-rgb),1), rgba(var(--accent-rgb),0.6))`,
+      }}
     />
   );
 }
