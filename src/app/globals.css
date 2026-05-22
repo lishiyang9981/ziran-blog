@@ -2,18 +2,28 @@
 
 @plugin "@tailwindcss/typography";
 
+/* ── 主题变量 ── */
 :root {
-  --hue-rotate: 0deg;
+  --hue: 0deg;   /* 紫色主题：不旋转 */
+}
+
+[data-theme="cloud"] {
+  --hue: -70deg; /* 云朵主题：紫 → 天空蓝 */
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-/* 主题色旋转：只影响有彩色的 accent 元素，白/黑背景不受影响 */
+/* 整页色调旋转（黑白灰饱和度为0，不受影响；头像通过 .no-hue 抵消） */
 .accent-hue {
-  filter: hue-rotate(var(--hue-rotate));
-  transition: filter 0.4s ease;
+  filter: hue-rotate(var(--hue));
+  transition: filter 0.5s ease;
+}
+
+/* 抵消头像上的色调旋转，保持照片原色 */
+[data-theme="cloud"] .no-hue {
+  filter: hue-rotate(70deg);
 }
 
 body {
