@@ -8,7 +8,15 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/notes)",
       "mcp__Claude_Preview__preview_start",
       "Bash(git init *)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(gh auth *)",
+      "Bash(git --version)",
+      "Bash(pnpm --version)",
+      "Bash(brew install *)",
+      "Bash(pnpm add *)",
+      "Bash(npm install *)",
+      "Bash(npx vercel *)"
     ]
   }
 }

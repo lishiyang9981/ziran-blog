@@ -47,7 +47,7 @@ export function TimelineSection() {
 
           <div>
             <p className="text-sm font-semibold tracking-[0.2em] text-zinc-300">
-              Ricoui
+              CWR&amp;L
             </p>
             <p className="mt-1 text-xs text-zinc-600">
               持续探索技术与认知的边界
@@ -70,7 +70,7 @@ export function TimelineSection() {
           </div>
 
           <p className="text-xs text-zinc-600">
-            © 2026 Ricoui. All rights reserved.
+            © 2026 CWR&amp;L. All rights reserved.
           </p>
 
         </div>

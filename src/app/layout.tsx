@@ -8,8 +8,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "ZIRAN",
-  description: "Personal Digital Garden",
+  title: "CWR&L",
+  description: "持续探索技术与认知的边界",
 };
 
 export default function RootLayout({

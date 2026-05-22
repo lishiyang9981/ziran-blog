@@ -5,12 +5,12 @@ import { usePathname } from "next/navigation";
 import { Search, Sun } from "lucide-react";
 
 const NAV_ITEMS = [
-  { label: "Home",     href: "/" },
-  { label: "Articles", href: "/blog" },
-  { label: "Notes",    href: "/notes" },
-  { label: "Projects", href: "/projects" },
-  { label: "Lab",      href: "/lab" },
-  { label: "About",    href: "/about" },
+  { label: "首页",   href: "/" },
+  { label: "文章",   href: "/blog" },
+  { label: "日志",   href: "/notes" },
+  { label: "项目",   href: "/projects" },
+  { label: "实验室", href: "/lab" },
+  { label: "关于",   href: "/about" },
 ];
 
 export function Navbar() {
@@ -24,7 +24,7 @@ export function Navbar() {
         <Link href="/" className="group flex items-center gap-2">
           <div className="h-1.5 w-1.5 rounded-full bg-purple-400 shadow-[0_0_6px_rgba(168,85,247,0.7)] transition-all duration-300 group-hover:shadow-[0_0_12px_rgba(168,85,247,1)]" />
           <span className="text-sm font-semibold tracking-[0.15em] text-white">
-            Ricoui
+            CWR&amp;L
           </span>
         </Link>
 
