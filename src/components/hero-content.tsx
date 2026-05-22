@@ -27,11 +27,11 @@ export function HeroContent() {
         {...FADE_UP(0.15)}
         className="text-5xl font-semibold leading-[1.08] tracking-[-0.04em] lg:text-6xl 2xl:text-7xl"
       >
-        <span className="block bg-gradient-to-b from-white via-white to-zinc-400 bg-clip-text text-transparent">
+        <span className="hero-title block bg-gradient-to-b from-white via-white to-zinc-400 bg-clip-text text-transparent">
           持续探索
         </span>
         <span className="block">
-          <span className="bg-gradient-to-b from-white via-white to-zinc-400 bg-clip-text text-transparent">
+          <span className="hero-title bg-gradient-to-b from-white via-white to-zinc-400 bg-clip-text text-transparent">
             技术与认知的
           </span>
           <span className="bg-gradient-to-r from-purple-300 to-purple-500 bg-clip-text text-transparent">

@@ -36,7 +36,7 @@ export default function Home() {
 
               {/* Back ring arc */}
               <svg className="absolute inset-0 z-0 h-full w-full" viewBox="0 0 580 580" fill="none">
-                <path d="M 38,305 A 252,64 -8 0 1 542,305" stroke="rgba(255,255,255,0.1)" strokeWidth="1.5" />
+                <path className="planet-ring-back" d="M 38,305 A 252,64 -8 0 1 542,305" stroke="rgba(255,255,255,0.1)" strokeWidth="1.5" />
               </svg>
 
               {/* Planet sphere */}
