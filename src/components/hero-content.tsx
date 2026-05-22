@@ -19,7 +19,7 @@ export function HeroContent() {
         className="mb-8 flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-xs text-zinc-400 backdrop-blur"
       >
         <span className="h-1.5 w-1.5 rounded-full bg-green-400 shadow-[0_0_6px_rgba(74,222,128,0.8)]" />
-        ITBP · 探索者 · 建设者
+        自然向晚，只取一朵紫云~
       </motion.div>
 
       {/* Headline */}
