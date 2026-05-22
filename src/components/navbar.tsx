@@ -15,8 +15,8 @@ const NAV_ITEMS = [
 ];
 
 const THEMES = [
-  { id: "dark",  dot: "#c084fc", title: "紫色" },
-  { id: "cloud", dot: "#7dd3fc", title: "云朵" },
+  { id: "dark",  dot: "#c084fc", title: "暗色" },
+  { id: "light", dot: "#52a66c", title: "自然" },
 ];
 
 export function Navbar() {
@@ -43,7 +43,7 @@ export function Navbar() {
     window.dispatchEvent(new CustomEvent("open-search"));
 
   const toggleTheme = () => {
-    const next = themeId === "dark" ? "cloud" : "dark";
+    const next = themeId === "dark" ? "light" : "dark";
     setThemeId(next);
     document.documentElement.setAttribute("data-theme", next);
     localStorage.setItem("blog-theme", next);

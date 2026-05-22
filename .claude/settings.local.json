@@ -24,7 +24,12 @@
       "Bash(git commit -m 'chore: 更新 hero badge 文案 *)",
       "Bash(git commit -m 'feat: 美化顶部卡片图标与文章缩略图占位 *)",
       "Bash(git commit -m 'chore: 新建 public/images 文件夹用于存放文章封面图 *)",
-      "Bash(git commit -m 'feat: 关于我页面添加头像图片，优化两栏布局 *)"
+      "Bash(git commit -m 'feat: 关于我页面添加头像图片，优化两栏布局 *)",
+      "Bash(git commit -m 'feat: 主题色切换按钮（紫/蓝/玫瑰/青） *)",
+      "Bash(git commit -m 'feat: 两套主题\\(紫/云\\)+浮动导航+回顶按钮 *)",
+      "Bash(git commit -m 'fix: 修复hydration报错，降低导航/回顶按钮触发阈值 *)",
+      "Bash(git commit -m 'fix: 修复fixed定位+重构主题系统+固定右侧边栏 *)",
+      "Bash(git commit -m 'feat: 亮色主题+丰富各内页背景 *)"
     ]
   }
 }

@@ -5,10 +5,13 @@ import { Navbar } from "@/components/navbar";
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-[#050505] text-white">
+    <main className="relative min-h-screen overflow-hidden bg-[#050505] text-white">
+      <div className="page-grid pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(rgba(255,255,255,0.018)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.018)_1px,transparent_1px)] bg-[size:80px_80px]" />
+      <div className="pointer-events-none absolute right-0 top-0 h-[500px] w-[500px] -translate-y-1/4 translate-x-1/3 rounded-full bg-purple-500/[0.06] blur-3xl" />
+      <div className="pointer-events-none absolute bottom-0 left-0 h-[300px] w-[300px] translate-y-1/3 -translate-x-1/4 rounded-full bg-pink-500/[0.04] blur-3xl" />
       <Navbar />
 
-      <div className="mx-auto max-w-[1000px] px-8 pb-24 pt-32">
+      <div className="relative z-10 mx-auto max-w-[1000px] px-8 pb-24 pt-32">
         <div className="flex flex-col items-center gap-14 lg:flex-row lg:items-center lg:gap-20">
 
           {/* 左侧：文字 */}
