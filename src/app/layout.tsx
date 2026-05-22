@@ -23,7 +23,7 @@ export default function RootLayout({
   const notes = getAllNotes();
 
   return (
-    <html lang="zh-CN">
+    <html lang="zh-CN" suppressHydrationWarning>
       {/* 防止主题切换时页面闪烁：在 JS 加载前就应用 data-theme */}
       <head>
         <script
