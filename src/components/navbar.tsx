@@ -10,7 +10,7 @@ const NAV_ITEMS = [
   { label: "日志",   href: "/notes" },
   { label: "项目",   href: "/projects" },
   { label: "实验室", href: "/lab" },
-  { label: "关于",   href: "/about" },
+  { label: "关于我", href: "/about" },
 ];
 
 export function Navbar() {
