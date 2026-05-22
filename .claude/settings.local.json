@@ -29,7 +29,9 @@
       "Bash(git commit -m 'feat: 两套主题\\(紫/云\\)+浮动导航+回顶按钮 *)",
       "Bash(git commit -m 'fix: 修复hydration报错，降低导航/回顶按钮触发阈值 *)",
       "Bash(git commit -m 'fix: 修复fixed定位+重构主题系统+固定右侧边栏 *)",
-      "Bash(git commit -m 'feat: 亮色主题+丰富各内页背景 *)"
+      "Bash(git commit -m 'feat: 亮色主题+丰富各内页背景 *)",
+      "Bash(sed -i '' 's/className=\"relative min-h-screen overflow-hidden bg-\\\\[#050505\\\\] text-white\"/className=\"page-bg relative min-h-screen overflow-hidden bg-[#050505] text-white\"/g' \\\\ *)",
+      "Bash(git commit -m 'fix: 修复CSS选择器#转义问题，用page-bg自定义类替代 *)"
     ]
   }
 }

@@ -21,7 +21,7 @@ export default async function NotePage({ params }: Props) {
   if (!note) notFound();
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#050505] text-white">
+    <main className="page-bg relative min-h-screen overflow-hidden bg-[#050505] text-white">
       <div className="page-grid pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(rgba(255,255,255,0.018)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.018)_1px,transparent_1px)] bg-[size:80px_80px]" />
       <div className="pointer-events-none absolute right-0 top-0 h-[400px] w-[400px] -translate-y-1/4 translate-x-1/4 rounded-full bg-emerald-500/[0.06] blur-3xl" />
       <Navbar />

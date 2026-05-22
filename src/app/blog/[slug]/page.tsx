@@ -69,7 +69,7 @@ export default async function PostPage({ params }: Props) {
   if (!post) notFound();
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#050505] text-white">
+    <main className="page-bg relative min-h-screen overflow-hidden bg-[#050505] text-white">
       {/* Background grid */}
       <div className="page-grid pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(rgba(255,255,255,0.018)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.018)_1px,transparent_1px)] bg-[size:80px_80px]" />
       <div className="pointer-events-none absolute right-0 top-0 h-[500px] w-[500px] -translate-y-1/3 translate-x-1/4 rounded-full bg-purple-500/[0.06] blur-3xl" />

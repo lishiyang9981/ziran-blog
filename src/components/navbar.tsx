@@ -57,9 +57,11 @@ export function Navbar() {
       <div
         className={`pointer-events-auto flex items-center gap-4 transition-all duration-500 ${
           scrolled
-            /* 滚动后：收缩成浮动胶囊 */
-            ? "h-11 rounded-full border border-white/[0.12] bg-[#050505]/80 px-4 shadow-[0_4px_32px_rgba(0,0,0,0.5)] backdrop-blur-2xl"
-            /* 页面顶部：全宽透明条 */
+            ? `h-11 rounded-full border px-4 shadow-[0_4px_32px_rgba(0,0,0,0.18)] backdrop-blur-2xl ${
+                themeId === "light"
+                  ? "border-black/[0.08] bg-white/90"
+                  : "border-white/[0.12] bg-[#050505]/80"
+              }`
             : "h-14 w-full max-w-7xl rounded-none border-b border-transparent bg-transparent px-6"
         }`}
       >

@@ -54,16 +54,11 @@ body {
   --accent: rgb(82, 166, 108);
 }
 
-/* ── 背景 ── */
+/* ── 背景（用 page-bg 自定义类代替 Tailwind 任意值类，避免 # 转义问题）── */
 [data-theme="light"] body                        { background-color: #f4f7f0; color: #1a2a18; }
-[data-theme="light"] .bg-\[#050505\]             { background-color: #f4f7f0; }
+[data-theme="light"] .page-bg                    { background-color: #f4f7f0; }
 [data-theme="light"] .bg-black\/20               { background-color: rgba(0,0,0,0.03); }
 [data-theme="light"] .bg-black\/30               { background-color: rgba(0,0,0,0.03); }
-
-/* ── 导航栏胶囊背景 ── */
-[data-theme="light"] .bg-\[#050505\]\/80         { background-color: rgba(244,247,240,0.94) !important; }
-[data-theme="light"] .bg-\[#050505\]\/88         { background-color: rgba(244,247,240,0.94) !important; }
-[data-theme="light"] .bg-\[#050505\]\/92         { background-color: rgba(244,247,240,0.97) !important; }
 
 /* ── 文字颜色 ── */
 [data-theme="light"] .text-white                 { color: #1a2a18; }

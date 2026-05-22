@@ -9,7 +9,7 @@ const LAB_ITEMS = [
 
 export default function LabPage() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#050505] text-white">
+    <main className="page-bg relative min-h-screen overflow-hidden bg-[#050505] text-white">
 
       {/* Background grid */}
       <div className="page-grid pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(rgba(255,255,255,0.018)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.018)_1px,transparent_1px)] bg-[size:80px_80px]" />
