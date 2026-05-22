@@ -44,7 +44,7 @@ export default function BlogPage() {
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="group flex items-center gap-6 rounded-[24px] border border-white/[0.07] bg-white/[0.02] p-6 backdrop-blur-sm transition-all duration-300 hover:border-purple-500/20 hover:bg-white/[0.03]"
+              className="card-item group flex items-center gap-6 rounded-[24px] border border-white/[0.07] bg-white/[0.02] p-6 backdrop-blur-sm transition-all duration-300 hover:border-purple-500/20 hover:bg-white/[0.03]"
             >
               {/* Thumbnail */}
               <div className={`relative h-[80px] w-[128px] flex-shrink-0 overflow-hidden rounded-xl bg-gradient-to-br ${COVER_GRADIENTS[i % COVER_GRADIENTS.length]}`}>
@@ -67,7 +67,7 @@ export default function BlogPage() {
                 <p className="mt-2 text-sm text-zinc-500">{post.description}</p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {post.tags?.map((tag) => (
-                    <span key={tag} className="rounded-full border border-white/[0.08] px-3 py-0.5 text-xs text-zinc-500">
+                    <span key={tag} className="tag-chip rounded-full border border-white/[0.08] px-3 py-0.5 text-xs text-zinc-500">
                       {tag}
                     </span>
                   ))}
@@ -80,7 +80,7 @@ export default function BlogPage() {
         </div>
 
         {posts.length === 0 && (
-          <div className="rounded-[24px] border border-white/[0.07] bg-white/[0.02] p-16 text-center backdrop-blur-sm">
+          <div className="card-item rounded-[24px] border border-white/[0.07] bg-white/[0.02] p-16 text-center backdrop-blur-sm">
             <p className="text-zinc-600">还没有文章，快去写一篇吧。</p>
           </div>
         )}

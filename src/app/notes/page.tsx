@@ -32,14 +32,14 @@ export default function NotesPage() {
             <Link
               key={note.slug}
               href={`/notes/${note.slug}`}
-              className="group rounded-[22px] border border-white/[0.07] bg-white/[0.02] p-6 backdrop-blur-sm transition-all duration-300 hover:border-white/12 hover:bg-white/[0.04]"
+              className="card-item group rounded-[22px] border border-white/[0.07] bg-white/[0.02] p-6 backdrop-blur-sm transition-all duration-300 hover:border-white/12 hover:bg-white/[0.04]"
             >
               <p className="mb-3 text-xs text-zinc-600">{note.date}</p>
               <h2 className="text-lg font-semibold text-white transition-colors group-hover:text-zinc-100">{note.title}</h2>
               <p className="mt-2 line-clamp-2 text-sm leading-6 text-zinc-500">{note.description}</p>
               <div className="mt-4 flex flex-wrap gap-1.5">
                 {note.tags?.map((tag) => (
-                  <span key={tag} className="rounded-full border border-white/[0.08] px-2.5 py-0.5 text-[11px] text-zinc-500">
+                  <span key={tag} className="tag-chip rounded-full border border-white/[0.08] px-2.5 py-0.5 text-[11px] text-zinc-500">
                     {tag}
                   </span>
                 ))}
@@ -49,7 +49,7 @@ export default function NotesPage() {
         </div>
 
         {notes.length === 0 && (
-          <div className="rounded-[24px] border border-white/[0.07] bg-white/[0.02] p-16 text-center backdrop-blur-sm">
+          <div className="card-item rounded-[24px] border border-white/[0.07] bg-white/[0.02] p-16 text-center backdrop-blur-sm">
             <p className="text-zinc-600">还没有日志，快去记录第一条吧。</p>
           </div>
         )}

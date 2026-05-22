@@ -48,14 +48,14 @@ export default function LabPage() {
           {LAB_ITEMS.map((item) => (
             <div
               key={item.title}
-              className="group rounded-[22px] border border-white/[0.07] bg-white/[0.02] p-6 backdrop-blur-sm transition-all duration-300 hover:border-white/12 hover:bg-white/[0.04]"
+              className="card-item group rounded-[22px] border border-white/[0.07] bg-white/[0.02] p-6 backdrop-blur-sm transition-all duration-300 hover:border-white/12 hover:bg-white/[0.04]"
             >
               <div className="mb-3 flex items-center justify-between">
                 <h2 className="text-lg font-semibold text-white">{item.title}</h2>
                 <span className={`rounded-full px-2.5 py-0.5 text-[10px] ${
                   item.status === "进行中"
-                    ? "bg-purple-500/20 text-purple-300"
-                    : "border border-white/[0.08] text-zinc-600"
+                    ? "status-active bg-purple-500/20 text-purple-300"
+                    : "tag-chip border border-white/[0.08] text-zinc-600"
                 }`}>
                   {item.status}
                 </span>

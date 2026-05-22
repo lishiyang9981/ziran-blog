@@ -48,7 +48,7 @@ export default async function NotePage({ params }: Props) {
               {note.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full border border-white/[0.08] px-3 py-1 text-xs text-zinc-500"
+                  className="tag-chip rounded-full border border-white/[0.08] px-3 py-1 text-xs text-zinc-500"
                 >
                   {tag}
                 </span>

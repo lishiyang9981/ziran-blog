@@ -40,7 +40,7 @@ export default function ProjectsPage() {
               href={project.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block overflow-hidden rounded-[28px] border border-white/[0.07] bg-white/[0.02] backdrop-blur-sm transition-all duration-300 hover:border-white/12 hover:bg-white/[0.04]"
+              className="card-item group block overflow-hidden rounded-[28px] border border-white/[0.07] bg-white/[0.02] backdrop-blur-sm transition-all duration-300 hover:border-white/12 hover:bg-white/[0.04]"
             >
               {/* Gradient banner */}
               <div className={`h-[120px] w-full bg-gradient-to-br ${project.gradient} relative flex items-center justify-center`}>
@@ -50,12 +50,12 @@ export default function ProjectsPage() {
               <div className="p-6">
                 <div className="mb-3 flex items-center justify-between">
                   <h2 className="text-xl font-semibold text-white">{project.title}</h2>
-                  <span className="rounded-full bg-purple-500/20 px-3 py-0.5 text-xs text-purple-300">{project.status}</span>
+                  <span className="status-active rounded-full bg-purple-500/20 px-3 py-0.5 text-xs text-purple-300">{project.status}</span>
                 </div>
                 <p className="text-sm leading-7 text-zinc-500">{project.desc}</p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
-                    <span key={tag} className="rounded-full border border-white/[0.08] px-3 py-0.5 text-xs text-zinc-500">
+                    <span key={tag} className="tag-chip rounded-full border border-white/[0.08] px-3 py-0.5 text-xs text-zinc-500">
                       {tag}
                     </span>
                   ))}
