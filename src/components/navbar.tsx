@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Search, Sun } from "lucide-react";
@@ -15,9 +16,26 @@ const NAV_ITEMS = [
 
 export function Navbar() {
   const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handler = () => setScrolled(window.scrollY > 24);
+    window.addEventListener("scroll", handler, { passive: true });
+    handler();
+    return () => window.removeEventListener("scroll", handler);
+  }, []);
+
+  const openSearch = () =>
+    window.dispatchEvent(new CustomEvent("open-search"));
 
   return (
-    <header className="fixed left-0 top-0 z-50 w-full border-b border-white/[0.06] bg-[#050505]/85 backdrop-blur-2xl">
+    <header
+      className={`fixed left-0 top-0 z-50 w-full transition-all duration-300 ${
+        scrolled
+          ? "border-b border-white/[0.08] bg-[#050505]/92 backdrop-blur-2xl shadow-[0_1px_30px_rgba(0,0,0,0.4)]"
+          : "border-b border-transparent bg-transparent"
+      }`}
+    >
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-6">
 
         {/* Logo */}
@@ -32,9 +50,7 @@ export function Navbar() {
         <nav className="hidden items-center gap-1 md:flex">
           {NAV_ITEMS.map(({ label, href }) => {
             const active =
-              href === "/"
-                ? pathname === "/"
-                : pathname.startsWith(href);
+              href === "/" ? pathname === "/" : pathname.startsWith(href);
             return (
               <Link
                 key={href}
@@ -56,8 +72,12 @@ export function Navbar() {
 
         {/* Actions */}
         <div className="flex items-center gap-2">
-          <button className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-zinc-500 transition hover:border-white/20 hover:text-white">
+          <button
+            onClick={openSearch}
+            className="flex h-8 items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 text-zinc-500 transition hover:border-white/20 hover:text-white"
+          >
             <Search className="h-3.5 w-3.5" />
+            <span className="hidden text-[11px] lg:inline">⌘K</span>
           </button>
           <button className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-zinc-500 transition hover:border-white/20 hover:text-white">
             <Sun className="h-3.5 w-3.5" />

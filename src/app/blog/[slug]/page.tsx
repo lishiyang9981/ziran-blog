@@ -4,6 +4,8 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 
 import { Navbar } from "@/components/navbar";
+import { ScrollProgress } from "@/components/scroll-progress";
+import { PreCopy } from "@/components/pre-copy";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
 
 type Props = {
@@ -58,7 +60,7 @@ function Callout({
   );
 }
 
-const MDX_COMPONENTS = { Video, YouTube, Callout };
+const MDX_COMPONENTS = { Video, YouTube, Callout, pre: PreCopy };
 
 export default async function PostPage({ params }: Props) {
   const { slug } = await params;
@@ -68,6 +70,7 @@ export default async function PostPage({ params }: Props) {
 
   return (
     <main className="min-h-screen bg-[#050505] text-white">
+      <ScrollProgress />
       <Navbar />
 
       <article className="mx-auto max-w-3xl px-8 pb-24 pt-32">

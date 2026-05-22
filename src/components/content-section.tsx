@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 import type { Post } from "@/lib/posts";
 
@@ -16,95 +19,88 @@ const LAB_ITEMS = [
   { title: "AI 工具评测",   desc: "测评与分享优秀的 AI 工具" },
 ];
 
+const FADE = (delay = 0) => ({
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.5, delay },
+});
+
 export function ContentSection({ posts }: { posts: Post[] }) {
   return (
     <section className="relative z-10 mx-auto mt-2 grid max-w-[1400px] grid-cols-1 gap-5 px-8 pb-6 lg:grid-cols-[1.65fr_1fr]">
 
       {/* ── Recent Articles ─────────────────── */}
-      <div className="rounded-[28px] border border-white/[0.07] bg-white/[0.02] p-8 backdrop-blur">
-
+      <motion.div
+        {...FADE(0)}
+        className="rounded-[28px] border border-white/[0.07] bg-white/[0.02] p-8 backdrop-blur"
+      >
         <div className="mb-7 flex items-center justify-between">
           <h2 className="text-[22px] font-semibold text-white">近期文章</h2>
-          <Link
-            href="/blog"
-            className="text-sm text-zinc-500 transition hover:text-white"
-          >
+          <Link href="/blog" className="text-sm text-zinc-500 transition hover:text-white">
             查看全部 →
           </Link>
         </div>
 
         <div className="space-y-2">
           {posts.map((post, i) => (
-            <Link
+            <motion.div
               key={post.slug}
-              href={`/blog/${post.slug}`}
-              className="group flex items-center gap-5 rounded-2xl border border-transparent p-3 transition-all duration-300 hover:border-white/[0.06] hover:bg-white/[0.02]"
+              initial={{ opacity: 0, x: -16 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: i * 0.07 }}
             >
-              {/* Thumbnail */}
-              <div
-                className={`h-[80px] w-[128px] flex-shrink-0 overflow-hidden rounded-xl bg-gradient-to-br ${COVER_GRADIENTS[i % COVER_GRADIENTS.length]}`}
+              <Link
+                href={`/blog/${post.slug}`}
+                className="group flex items-center gap-5 rounded-2xl border border-transparent p-3 transition-all duration-300 hover:border-white/[0.06] hover:bg-white/[0.02]"
               >
-                {post.cover && (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={post.cover}
-                    alt={post.title}
-                    className="h-full w-full object-cover"
-                  />
-                )}
-              </div>
-
-              {/* Content */}
-              <div className="min-w-0 flex-1">
-                <h3 className="truncate text-[16px] font-medium text-white group-hover:text-zinc-100">
-                  {post.title}
-                </h3>
-                <p className="mt-1 line-clamp-1 text-sm text-zinc-600">
-                  {post.description}
-                </p>
-                <div className="mt-2.5 flex flex-wrap gap-1.5">
-                  {post.tags?.slice(0, 3).map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-white/[0.08] px-2.5 py-0.5 text-[11px] text-zinc-500"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                <div
+                  className={`h-[80px] w-[128px] flex-shrink-0 overflow-hidden rounded-xl bg-gradient-to-br ${COVER_GRADIENTS[i % COVER_GRADIENTS.length]}`}
+                >
+                  {post.cover && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={post.cover} alt={post.title} className="h-full w-full object-cover" />
+                  )}
                 </div>
-              </div>
-
-              {/* Date */}
-              <div className="flex-shrink-0 text-xs text-zinc-600">
-                {post.date}
-              </div>
-            </Link>
+                <div className="min-w-0 flex-1">
+                  <h3 className="truncate text-[16px] font-medium text-white group-hover:text-zinc-100">
+                    {post.title}
+                  </h3>
+                  <p className="mt-1 line-clamp-1 text-sm text-zinc-600">{post.description}</p>
+                  <div className="mt-2.5 flex flex-wrap gap-1.5">
+                    {post.tags?.slice(0, 3).map((tag) => (
+                      <span key={tag} className="rounded-full border border-white/[0.08] px-2.5 py-0.5 text-[11px] text-zinc-500">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div className="flex-shrink-0 text-xs text-zinc-600">{post.date}</div>
+              </Link>
+            </motion.div>
           ))}
         </div>
-
-      </div>
+      </motion.div>
 
       {/* ── AI Lab ──────────────────────────── */}
-      <div className="overflow-hidden rounded-[28px] border border-white/[0.07] bg-white/[0.02] p-8 backdrop-blur">
-
+      <motion.div
+        {...FADE(0.1)}
+        className="overflow-hidden rounded-[28px] border border-white/[0.07] bg-white/[0.02] p-8 backdrop-blur"
+      >
         <div className="mb-7 flex items-center justify-between">
           <h2 className="text-[22px] font-semibold text-white">AI Lab</h2>
-          <Link
-            href="/lab"
-            className="text-sm text-zinc-500 transition hover:text-white"
-          >
+          <Link href="/lab" className="text-sm text-zinc-500 transition hover:text-white">
             进入实验室 →
           </Link>
         </div>
 
-        {/* Sphere visual */}
         <div className="relative mb-7 flex h-[200px] items-center justify-center overflow-hidden rounded-[20px] border border-white/[0.07] bg-black/20">
           <div className="absolute h-36 w-36 rounded-full bg-purple-500/20 blur-3xl" />
           <div
             className="relative h-28 w-28 rounded-full"
             style={{
-              background:
-                "radial-gradient(circle at 30% 30%, rgba(255,255,255,0.92), rgba(168,85,247,0.42), rgba(0,0,0,0.97))",
+              background: "radial-gradient(circle at 30% 30%, rgba(255,255,255,0.92), rgba(168,85,247,0.42), rgba(0,0,0,0.97))",
               boxShadow: "0 0 50px rgba(168,85,247,0.3)",
             }}
           />
@@ -113,33 +109,33 @@ export function ContentSection({ posts }: { posts: Post[] }) {
           </p>
         </div>
 
-        {/* Lab list */}
         <div className="space-y-2.5">
-          {LAB_ITEMS.map((item) => (
-            <Link
+          {LAB_ITEMS.map((item, i) => (
+            <motion.div
               key={item.title}
-              href="/lab"
-              className="flex items-center justify-between rounded-xl border border-white/[0.07] bg-white/[0.02] px-4 py-3.5 transition-all duration-300 hover:bg-white/[0.04]"
+              initial={{ opacity: 0, x: 16 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.08 }}
             >
-              <div>
-                <p className="text-sm font-medium text-zinc-200">
-                  {item.title}
-                </p>
-                <p className="mt-0.5 text-xs text-zinc-600">{item.desc}</p>
-              </div>
-              <span className="text-xs text-zinc-600">→</span>
-            </Link>
+              <Link
+                href="/lab"
+                className="flex items-center justify-between rounded-xl border border-white/[0.07] bg-white/[0.02] px-4 py-3.5 transition-all duration-300 hover:bg-white/[0.04]"
+              >
+                <div>
+                  <p className="text-sm font-medium text-zinc-200">{item.title}</p>
+                  <p className="mt-0.5 text-xs text-zinc-600">{item.desc}</p>
+                </div>
+                <span className="text-xs text-zinc-600">→</span>
+              </Link>
+            </motion.div>
           ))}
         </div>
 
-        <Link
-          href="/lab"
-          className="mt-4 block text-center text-xs text-zinc-600 transition hover:text-zinc-400"
-        >
+        <Link href="/lab" className="mt-4 block text-center text-xs text-zinc-600 transition hover:text-zinc-400">
           更多实验记录 →
         </Link>
-
-      </div>
+      </motion.div>
 
     </section>
   );

@@ -57,3 +57,19 @@ body {
 .animate-glow {
   animation: pulseGlow 8s ease-in-out infinite;
 }
+
+/* twinkling stars */
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.15;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.3);
+  }
+}
+
+.star {
+  animation: twinkle 3s ease-in-out infinite;
+}
