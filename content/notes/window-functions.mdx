@@ -1,0 +1,25 @@
+---
+title: "理解了窗口函数的执行流程"
+date: "2026-05-20"
+description: "终于搞懂了窗口函数分区处理的完整流程，原来每个分区是独立计算的，来彻底厘清了！"
+tags: ["MySQL"]
+---
+
+今天终于把窗口函数的执行流程搞清楚了。
+
+核心理解：窗口函数不会像 GROUP BY 那样折叠行，而是在每一行上计算一个"窗口"范围内的聚合值，行数保持不变。
+
+```sql
+SELECT
+  name,
+  department,
+  salary,
+  RANK() OVER (PARTITION BY department ORDER BY salary DESC) AS dept_rank,
+  AVG(salary) OVER (PARTITION BY department) AS dept_avg
+FROM employees;
+```
+
+关键点：
+- `PARTITION BY` 相当于分组，但不折叠
+- `ORDER BY` 决定窗口内的排序和帧范围
+- 执行顺序：WHERE → GROUP BY → HAVING → 窗口函数 → ORDER BY → LIMIT

@@ -1,0 +1,22 @@
+---
+title: "学习了 Astro 框架"
+date: "2026-05-08"
+description: "Astro 的内容驱动理念非常适合构建个人博客，Zero JS by default 的思路让人眼前一亮。"
+tags: ["Astro"]
+---
+
+Astro 最吸引我的特性：**Islands Architecture**（群岛架构）。
+
+默认情况下，所有组件都在服务端渲染成静态 HTML，只有明确标记为 `client:*` 的组件才会水合（hydrate）成交互式。
+
+```astro
+<!-- 这个 Counter 组件会在客户端加载 -->
+<Counter client:load />
+
+<!-- 这个 Chart 只在可见时才加载 -->
+<Chart client:visible />
+```
+
+对比 Next.js：Astro 更适合内容为主的站点，Next.js 更适合需要大量交互的应用。
+
+对于博客来说，Astro 可能是更轻量的选择。

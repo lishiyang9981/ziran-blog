@@ -1,0 +1,9 @@
+allowBuilds:
+  '@tsparticles/engine': true
+  react-tsparticles: set this to true or false
+  sharp: true
+  tsparticles-engine: set this to true or false
+  unrs-resolver: true
+ignoredBuiltDependencies:
+  - sharp
+  - unrs-resolver

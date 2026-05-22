@@ -1,0 +1,76 @@
+---
+title: "使用 Next.js + MDX 搭建个人博客"
+date: "2026-05-08"
+description: "从零搭建现代化个人博客系统，支持 MDX 富内容、SEO 优化与 Vercel 一键部署。"
+tags: ["Next.js", "MDX", "博客"]
+---
+
+## 为什么选择 Next.js + MDX
+
+搭建个人博客的方案很多：Notion、Ghost、Hexo、Hugo……我最终选择 Next.js + MDX 的原因：
+
+1. **完全掌控**：代码完全自己写，想怎么改就怎么改
+2. **MDX 的灵活性**：在 Markdown 里嵌入 React 组件，可以写交互式内容
+3. **Vercel 部署**：与 Next.js 无缝集成，推送即部署
+4. **性能优异**：静态生成（SSG）+ 图片优化，开箱即用
+
+## 核心架构
+
+```
+├── content/
+│   ├── blog/        ← MDX 博客文章
+│   └── notes/       ← MDX 学习日志
+├── src/
+│   ├── app/         ← Next.js App Router 页面
+│   ├── components/  ← React 组件
+│   └── lib/         ← 工具函数（读取 MDX 等）
+```
+
+## MDX 文章格式
+
+每篇文章是一个 `.mdx` 文件，顶部用 frontmatter 定义元数据：
+
+```markdown
+---
+title: "文章标题"
+date: "2026-01-01"
+description: "文章简介"
+tags: ["标签1", "标签2"]
+cover: "/images/cover.jpg"  # 可选封面图
+---
+
+正文内容...
+```
+
+## 支持的富内容
+
+除了标准 Markdown，还支持：
+
+**内嵌视频：**
+
+```jsx
+<Video src="/videos/demo.mp4" />
+```
+
+**YouTube 嵌入：**
+
+```jsx
+<YouTube id="dQw4w9WgXcQ" />
+```
+
+**提示框：**
+
+```jsx
+<Callout type="tip">这是一个小技巧</Callout>
+<Callout type="warn">注意这里的坑</Callout>
+```
+
+## 部署到 Vercel
+
+1. 推送代码到 GitHub
+2. 在 Vercel 导入仓库
+3. 自动检测 Next.js 框架，零配置部署
+
+每次 `git push`，Vercel 自动触发构建和部署，通常 30 秒内完成。
+
+如果你也想搭一个类似的博客，可以直接 fork 这个项目修改。

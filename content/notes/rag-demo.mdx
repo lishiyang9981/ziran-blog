@@ -1,0 +1,19 @@
+---
+title: "实现了一个 RAG Demo"
+date: "2026-05-17"
+description: "用 LangChain + 向量数据库完成了第一个 RAG 应用，整个链路跑通了！"
+tags: ["AI"]
+---
+
+用 LangChain + Chroma 搭了一个最简单的 RAG 系统。
+
+核心流程：
+
+1. **文档加载** → 切分 chunk
+2. **Embedding** → 存入向量库
+3. **检索** → 用户问题 → 相似度搜索 → Top-K 文档
+4. **生成** → 将检索结果塞进 prompt → LLM 回答
+
+最大的坑：chunk size 和 overlap 的调参，太小检索不到完整语义，太大 context 爆炸。
+
+下一步：试试 HyDE（Hypothetical Document Embeddings）看看能不能提升召回质量。

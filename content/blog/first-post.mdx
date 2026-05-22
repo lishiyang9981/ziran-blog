@@ -1,0 +1,95 @@
+---
+title: "深入理解 MySQL 窗口函数原理"
+date: "2026-05-20"
+description: "从执行流程到底层逻辑，彻底理解窗口函数的实现机制。"
+tags: ["MySQL", "数据库", "原理"]
+---
+
+## 什么是窗口函数
+
+窗口函数（Window Function）是 SQL 中非常强大的特性，它允许对**一组相关行**执行计算，而不像 `GROUP BY` 那样将多行折叠为一行。
+
+```sql
+SELECT
+  name,
+  department,
+  salary,
+  RANK() OVER (PARTITION BY department ORDER BY salary DESC) AS rank
+FROM employees;
+```
+
+每一行都保留，同时多了一列 `rank`，展示该员工在其部门的薪资排名。
+
+## 执行顺序
+
+理解窗口函数，最重要的是搞清楚它在 SQL 执行顺序中的位置：
+
+```
+FROM → WHERE → GROUP BY → HAVING → 窗口函数 → SELECT → ORDER BY → LIMIT
+```
+
+窗口函数在 `HAVING` 之后、`ORDER BY` 之前执行。这意味着：
+- 你**不能**在 `WHERE` 或 `HAVING` 中使用窗口函数的结果
+- 但你**可以**用子查询把结果包起来再过滤
+
+## 核心语法
+
+```sql
+函数名([参数]) OVER (
+  [PARTITION BY 列]
+  [ORDER BY 列]
+  [ROWS/RANGE BETWEEN ... AND ...]
+)
+```
+
+### PARTITION BY
+
+相当于在每个分区内独立运行函数。不加 `PARTITION BY` 则整个结果集是一个分区。
+
+### ORDER BY
+
+决定分区内的排序。对于**排名类**函数（RANK、DENSE_RANK、ROW_NUMBER），必须指定 `ORDER BY`。
+
+### 帧（Frame）
+
+`ROWS BETWEEN` 和 `RANGE BETWEEN` 控制"当前行的窗口范围"：
+
+```sql
+-- 当前行和前两行的平均值（移动平均）
+AVG(salary) OVER (
+  ORDER BY hire_date
+  ROWS BETWEEN 2 PRECEDING AND CURRENT ROW
+)
+```
+
+## 常用函数
+
+| 函数 | 用途 |
+|------|------|
+| `ROW_NUMBER()` | 唯一行号，不处理并列 |
+| `RANK()` | 排名，并列后跳号 |
+| `DENSE_RANK()` | 排名，并列后不跳号 |
+| `LAG(col, n)` | 取当前行往前第 n 行的值 |
+| `LEAD(col, n)` | 取当前行往后第 n 行的值 |
+| `SUM() OVER (...)` | 累计求和 |
+
+## 一个实战例子
+
+计算每个员工的薪资在其部门中的**百分位排名**，以及与部门平均值的**差额**：
+
+```sql
+SELECT
+  name,
+  department,
+  salary,
+  PERCENT_RANK() OVER (
+    PARTITION BY department
+    ORDER BY salary
+  ) AS percentile,
+  salary - AVG(salary) OVER (PARTITION BY department) AS vs_avg
+FROM employees;
+```
+
+## 总结
+
+窗口函数是 SQL 里非常值得深入的特性，熟练掌握后能解决很多用子查询或临时表才能解决的问题。建议多写，多在实际数据上跑，感受"保留行数"与"GROUP BY 折叠"的本质区别。

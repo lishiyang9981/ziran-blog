@@ -1,0 +1,16 @@
+---
+title: "优化了博客的性能"
+date: "2026-05-11"
+description: "用图片懒加载和代码分割让博客性能分提升明显，Lighthouse 跑到了 98 分。"
+tags: ["性能优化"]
+---
+
+主要做了三件事：
+
+1. **图片优化**：换用 `next/image`，自动 WebP + 懒加载，图片体积减少 60%+
+2. **代码分割**：把重型组件（framer-motion 动画）拆成动态 import
+3. **字体优化**：用 `next/font` 本地托管字体，消除 FOUT
+
+Lighthouse 分数：Performance 98 / Accessibility 100 / Best Practices 100 / SEO 100
+
+最大收益来自图片优化，几乎不用改逻辑，收益却最大。
