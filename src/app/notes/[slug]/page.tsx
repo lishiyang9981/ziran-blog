@@ -9,6 +9,7 @@ import { PreCopy } from "@/components/pre-copy";
 import { TagLink } from "@/components/tag-link";
 import { TableOfContents } from "@/components/table-of-contents";
 import { PostNav } from "@/components/post-nav";
+import { DraftNotice } from "@/components/draft-badge";
 import { getAllNotes, getNoteBySlug } from "@/lib/notes";
 import { getAdjacent } from "@/lib/content";
 
@@ -43,6 +44,8 @@ export default async function NotePage({ params }: Props) {
         >
           ← 返回随笔
         </Link>
+
+        {note.draft && <DraftNotice />}
 
         <header className="mb-14">
           <p className="mb-4 text-sm text-zinc-600">{note.date}</p>

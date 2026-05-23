@@ -9,6 +9,7 @@ import { PreCopy } from "@/components/pre-copy";
 import { TagLink } from "@/components/tag-link";
 import { TableOfContents } from "@/components/table-of-contents";
 import { PostNav } from "@/components/post-nav";
+import { DraftNotice } from "@/components/draft-badge";
 import { getAllReading, getReadingBySlug } from "@/lib/reading";
 import { getAdjacent } from "@/lib/content";
 
@@ -43,6 +44,8 @@ export default async function ReadingDetail({ params }: Props) {
         >
           ← 返回读书
         </Link>
+
+        {item.draft && <DraftNotice />}
 
         {item.cover && (
           // eslint-disable-next-line @next/next/no-img-element

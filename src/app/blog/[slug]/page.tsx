@@ -10,6 +10,7 @@ import { PreCopy } from "@/components/pre-copy";
 import { TagLink } from "@/components/tag-link";
 import { TableOfContents } from "@/components/table-of-contents";
 import { PostNav } from "@/components/post-nav";
+import { DraftNotice } from "@/components/draft-badge";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
 import { getAdjacent } from "@/lib/content";
 
@@ -93,6 +94,8 @@ export default async function PostPage({ params }: Props) {
         >
           ← 返回文章列表
         </Link>
+
+        {post.draft && <DraftNotice />}
 
         {/* Cover image */}
         {post.cover && (

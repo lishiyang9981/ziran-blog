@@ -221,6 +221,39 @@ body {
   --tw-prose-td-borders:    rgba(82,166,108,0.1);
 }
 
+/* 亮色下强制覆盖正文颜色：详情页用了 prose-p:text-zinc-400 / prose-headings:text-white
+   等显式类，会盖掉上面的 --tw-prose-* 变量，这里用 !important 修正，
+   保证正文可读、标题不再是白字，整体走协调的深绿色调 */
+[data-theme="light"] .prose-invert p,
+[data-theme="light"] .prose-invert li {
+  color: #2f4329 !important;
+}
+[data-theme="light"] .prose-invert h1,
+[data-theme="light"] .prose-invert h2,
+[data-theme="light"] .prose-invert h3,
+[data-theme="light"] .prose-invert h4,
+[data-theme="light"] .prose-invert strong {
+  color: #18271a !important;
+}
+[data-theme="light"] .prose-invert a {
+  color: #2d7a46 !important;
+}
+[data-theme="light"] .prose-invert blockquote {
+  color: #46603f !important;
+}
+[data-theme="light"] .prose-invert :not(pre) > code {
+  color: #1f6b3f !important;
+  background-color: rgba(82, 166, 108, 0.1) !important;
+}
+[data-theme="light"] .prose-invert pre {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+  border-color: rgba(82, 166, 108, 0.18) !important;
+}
+[data-theme="light"] .prose-invert pre code {
+  color: #233b22 !important;
+  background-color: transparent !important;
+}
+
 /* ── 滚动条 ── */
 [data-theme="light"] ::-webkit-scrollbar-track { background: #f2f5ef; }
 [data-theme="light"] ::-webkit-scrollbar-thumb { background: rgba(82,166,108,0.28); }
