@@ -8,7 +8,7 @@ import { Search, Menu, X } from "lucide-react";
 import { NavActions } from "@/components/nav-actions";
 
 const NAV_ITEMS = [
-  { label: "首页", href: "/" },
+  { label: "衡门", href: "/" },
   { label: "见山", href: "/blog" },
   { label: "观澜", href: "/reading" },
   { label: "从心", href: "/notes" },

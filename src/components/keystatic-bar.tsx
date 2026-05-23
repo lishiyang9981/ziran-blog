@@ -31,7 +31,7 @@ export function KeystaticBar() {
         className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs text-zinc-300 transition hover:bg-white/10 hover:text-white"
       >
         <Home className="h-3.5 w-3.5" />
-        回到首页
+        回到衡门
       </a>
       {articleHref && (
         <>
