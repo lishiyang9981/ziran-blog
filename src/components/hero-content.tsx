@@ -25,7 +25,7 @@ export function HeroContent() {
       {/* Headline */}
       <motion.h1
         {...FADE_UP(0.15)}
-        className="text-5xl font-semibold leading-[1.08] tracking-[-0.04em] lg:text-6xl 2xl:text-7xl"
+        className="font-art text-5xl font-semibold leading-[1.08] tracking-[-0.04em] lg:text-6xl 2xl:text-7xl"
       >
         <span className="hero-title block bg-gradient-to-b from-white via-white to-zinc-400 bg-clip-text text-transparent">
           在技术、思考与

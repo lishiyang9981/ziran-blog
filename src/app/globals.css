@@ -105,6 +105,14 @@ body {
 h1, h2, h3, .hero-title { text-wrap: balance; }
 .prose-invert p { text-wrap: pretty; }
 
+/* 艺术字（首页大标题）：站酷小薇体，纤细文艺；未加载时优雅回落到苹方 */
+.font-art {
+  font-family: "ZCOOL XiaoWei", "Inter Variable", "PingFang SC", serif;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  line-height: 1.3;
+}
+
 /* 强调色滚动条 hover（科技感）*/
 ::-webkit-scrollbar-thumb:hover { background: rgba(var(--accent-rgb), 0.45); }
 

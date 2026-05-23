@@ -27,6 +27,13 @@ export default function RootLayout({
             __html: `(function(){var t=localStorage.getItem('blog-theme');if(t)document.documentElement.setAttribute('data-theme',t);})()`,
           }}
         />
+        {/* 艺术字：站酷小薇体（首页大标题用）。display=swap 先显示回落字体再换上 */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap"
+          rel="stylesheet"
+        />
       </head>
       {/* 不加任何 filter 类，避免破坏 fixed 定位 */}
       <body className={inter.className}>
