@@ -16,7 +16,7 @@ export default config({
   ui: {
     brand: { name: "CWR&L 博客后台" },
     navigation: {
-      内容: ["blog", "notes", "reading", "life"],
+      内容: ["blog", "reading", "notes", "life"],
     },
   },
 

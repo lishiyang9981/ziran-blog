@@ -15,15 +15,6 @@ const CARDS = [
     href: "/blog",
   },
   {
-    title: "从心",
-    desc: "随风而动的灵感碎念",
-    icon: Feather,
-    glow: "from-purple-500/20 to-fuchsia-500/10",
-    iconBg: "from-purple-500/30 to-fuchsia-500/20",
-    iconColor: "text-purple-300",
-    href: "/notes",
-  },
-  {
     title: "观澜",
     desc: "借镜他人光影的观察",
     icon: BookOpen,
@@ -31,6 +22,15 @@ const CARDS = [
     iconBg: "from-amber-500/30 to-orange-500/20",
     iconColor: "text-amber-300",
     href: "/reading",
+  },
+  {
+    title: "从心",
+    desc: "随风而动的灵感碎念",
+    icon: Feather,
+    glow: "from-purple-500/20 to-fuchsia-500/10",
+    iconBg: "from-purple-500/30 to-fuchsia-500/20",
+    iconColor: "text-purple-300",
+    href: "/notes",
   },
   {
     title: "止水",

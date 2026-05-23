@@ -26,8 +26,11 @@ export default function AboutPage() {
               栖迟
             </h1>
             <p className="mb-2 text-zinc-500">灵魂居所，生命状态与自我存照。</p>
-            <p className="mb-8 text-sm tracking-[0.2em]" style={{ color: "var(--accent)" }}>
+            <p className="mb-6 text-sm tracking-[0.2em]" style={{ color: "var(--accent)" }}>
               归宿与本色
+            </p>
+            <p className="mb-9 max-w-md text-[15px] leading-8 text-zinc-400">
+              这里是「栖迟」，也是我在网络世界里为自己留的一处歇脚亭。走过见山、观澜、从心、止水，在此停驻。我是 CWR&amp;L，幸会，同路人～
             </p>
 <div className="space-y-5 text-[15px] leading-8">
 

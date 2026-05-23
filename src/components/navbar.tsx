@@ -10,8 +10,8 @@ import { NavActions } from "@/components/nav-actions";
 const NAV_ITEMS = [
   { label: "首页", href: "/" },
   { label: "见山", href: "/blog" },
-  { label: "从心", href: "/notes" },
   { label: "观澜", href: "/reading" },
+  { label: "从心", href: "/notes" },
   { label: "止水", href: "/life" },
   { label: "栖迟", href: "/about" },
 ];
