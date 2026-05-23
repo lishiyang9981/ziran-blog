@@ -190,9 +190,6 @@ h1 {
 /* ── 星点（暗色是白点，亮色改成深绿小点）── */
 [data-theme="light"] .star { background-color: rgba(30,50,30,0.3) !important; }
 
-/* ── 星球背环（stroke 颜色改为绿色，亮色背景下可见）── */
-[data-theme="light"] .planet-ring-back { stroke: rgba(82,166,108,0.25) !important; }
-
 /* ════════════════════════════════════════════
    语义自定义类（避免转义 Tailwind 任意值类名）
 ════════════════════════════════════════════ */
@@ -217,12 +214,6 @@ h1 {
 [data-theme="light"] .tag-chip,
 [data-theme="light"] .theme-border {
   border-color: rgba(82,166,108,0.28) !important;
-}
-
-/* ── 状态徽章（"进行中" / "上线"）── */
-[data-theme="light"] .status-active {
-  background-color: rgba(82,166,108,0.14) !important;
-  color: #2a7040 !important;
 }
 
 /* ── 缩略图占位文字 ── */
