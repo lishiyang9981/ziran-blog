@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "autosync": "node scripts/content-autosync.mjs"
+    "autosync": "node scripts/content-autosync.mjs",
+    "write": "concurrently -k -n dev,sync -c cyan,magenta \"next dev\" \"node scripts/content-autosync.mjs\""
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.2.8",
@@ -34,6 +35,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
+    "concurrently": "^9.2.1",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
     "tailwindcss": "^4",
