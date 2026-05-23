@@ -11,6 +11,7 @@ import { TagLink } from "@/components/tag-link";
 import { TableOfContents } from "@/components/table-of-contents";
 import { PostNav } from "@/components/post-nav";
 import { DraftNotice } from "@/components/draft-badge";
+import { EditInKeystatic } from "@/components/edit-in-keystatic";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
 import { getAdjacent } from "@/lib/content";
 
@@ -84,6 +85,7 @@ export default async function PostPage({ params }: Props) {
       <ScrollProgress />
       <Navbar />
       <TableOfContents />
+      <EditInKeystatic section="blog" slug={slug} />
 
       <article className="relative z-10 mx-auto max-w-3xl px-8 pb-24 pt-32">
 

@@ -10,6 +10,7 @@ import { TagLink } from "@/components/tag-link";
 import { TableOfContents } from "@/components/table-of-contents";
 import { PostNav } from "@/components/post-nav";
 import { DraftNotice } from "@/components/draft-badge";
+import { EditInKeystatic } from "@/components/edit-in-keystatic";
 import { getAllNotes, getNoteBySlug } from "@/lib/notes";
 import { getAdjacent } from "@/lib/content";
 
@@ -35,6 +36,7 @@ export default async function NotePage({ params }: Props) {
       <div className="pointer-events-none absolute right-0 top-0 h-[400px] w-[400px] -translate-y-1/4 translate-x-1/4 rounded-full bg-emerald-500/[0.06] blur-3xl" />
       <Navbar />
       <TableOfContents />
+      <EditInKeystatic section="notes" slug={slug} />
 
       <article className="relative z-10 mx-auto max-w-3xl px-8 pb-24 pt-32">
 
