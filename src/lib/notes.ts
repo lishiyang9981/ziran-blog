@@ -5,6 +5,13 @@ import matter from "gray-matter";
 
 const notesDir = path.join(process.cwd(), "content/notes");
 
+/* 归一化日期为 YYYY-MM-DD 字符串
+   （Keystatic 可能写出无引号日期，js-yaml 会解析成 Date 对象）*/
+function toDateStr(v: unknown): string {
+  if (v instanceof Date) return v.toISOString().slice(0, 10);
+  return typeof v === "string" ? v : v == null ? "" : String(v);
+}
+
 export type Note = {
   slug: string;
   title: string;
@@ -30,7 +37,7 @@ export function getAllNotes(): Note[] {
       return {
         slug,
         title: data.title ?? "",
-        date: data.date ?? "",
+        date: toDateStr(data.date),
         description: data.description ?? "",
         tags: data.tags ?? [],
       } as Note;
@@ -49,7 +56,7 @@ export function getNoteBySlug(slug: string): NoteWithContent | null {
     slug,
     content,
     title: data.title ?? "",
-    date: data.date ?? "",
+    date: toDateStr(data.date),
     description: data.description ?? "",
     tags: data.tags ?? [],
   };

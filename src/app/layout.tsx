@@ -3,10 +3,7 @@ import "./globals.css";
 
 import { Inter } from "next/font/google";
 
-import { MouseGlow }    from "@/components/mouse-glow";
-import { SearchModal }  from "@/components/search-modal";
-import { RightSidebar } from "@/components/right-sidebar";
-import { BackToTop }    from "@/components/back-to-top";
+import { SiteChrome }   from "@/components/site-chrome";
 import { getAllPosts }   from "@/lib/posts";
 import { getAllNotes }   from "@/lib/notes";
 
@@ -35,10 +32,7 @@ export default function RootLayout({
       </head>
       {/* 不加任何 filter 类，避免破坏 fixed 定位 */}
       <body className={inter.className}>
-        <MouseGlow />
-        <SearchModal posts={posts} notes={notes} />
-        <RightSidebar />
-        <BackToTop />
+        <SiteChrome posts={posts} notes={notes} />
         {children}
       </body>
     </html>

@@ -5,6 +5,13 @@ import matter from "gray-matter";
 
 const postsDir = path.join(process.cwd(), "content/blog");
 
+/* 归一化日期为 YYYY-MM-DD 字符串
+   （Keystatic 可能写出无引号日期，js-yaml 会解析成 Date 对象）*/
+function toDateStr(v: unknown): string {
+  if (v instanceof Date) return v.toISOString().slice(0, 10);
+  return typeof v === "string" ? v : v == null ? "" : String(v);
+}
+
 export type Post = {
   slug: string;
   title: string;
@@ -29,7 +36,7 @@ export function getAllPosts(): Post[] {
       return {
         slug,
         title: data.title ?? "",
-        date: data.date ?? "",
+        date: toDateStr(data.date),
         description: data.description ?? "",
         tags: data.tags ?? [],
         cover: data.cover,
@@ -49,7 +56,7 @@ export function getPostBySlug(slug: string): PostWithContent | null {
     slug,
     content,
     title: data.title ?? "",
-    date: data.date ?? "",
+    date: toDateStr(data.date),
     description: data.description ?? "",
     tags: data.tags ?? [],
     cover: data.cover,
