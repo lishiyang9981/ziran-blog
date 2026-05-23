@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUp } from "lucide-react";
+import { ArrowUp, Hash } from "lucide-react";
 
 const STATUS_ITEMS = [
   { label: "探索中", active: true },
@@ -46,6 +47,22 @@ export function RightSidebar() {
           </div>
         ))}
       </div>
+
+      {/* 标签入口：强调色胶囊（一行），与上方 NOW 灰色状态点做功能区分 */}
+      <Link
+        href="/tags"
+        title="按标签浏览"
+        className="flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-[11px] font-medium transition duration-200 hover:brightness-125"
+        style={{
+          borderColor: "rgba(var(--accent-rgb),0.4)",
+          backgroundColor: "rgba(var(--accent-rgb),0.12)",
+          color: "var(--accent)",
+          boxShadow: "0 0 12px rgba(var(--accent-rgb),0.15)",
+        }}
+      >
+        <Hash className="h-3 w-3" />
+        标签
+      </Link>
 
       {/* 分隔线 */}
       <div className="h-px w-4 bg-zinc-800" />

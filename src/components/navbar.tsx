@@ -168,6 +168,24 @@ export function Navbar() {
               </Link>
             );
           })}
+
+          {/* 标签入口（移动端随导航一起）*/}
+          <Link
+            href="/tags"
+            onClick={() => setMenuOpen(false)}
+            className={`mt-1 flex items-center gap-2.5 border-t border-white/[0.06] px-4 py-2.5 text-sm transition-colors ${
+              pathname.startsWith("/tags")
+                ? "font-medium text-white"
+                : "text-zinc-500 hover:text-zinc-300"
+            }`}
+          >
+            <span
+              className={`h-1.5 w-1.5 flex-shrink-0 rounded-full transition-all ${
+                pathname.startsWith("/tags") ? "bg-purple-400" : "bg-transparent"
+              }`}
+            />
+            按标签浏览
+          </Link>
         </div>
       )}
 
