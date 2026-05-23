@@ -12,6 +12,11 @@ html {
   scroll-behavior: smooth;
 }
 
+/* 锚点跳转为固定导航栏留出空间（文章目录跳转用）*/
+article :is(h1, h2, h3, h4) {
+  scroll-margin-top: 6rem;
+}
+
 body {
   background: #050505;
   color: white;

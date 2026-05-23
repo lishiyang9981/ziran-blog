@@ -50,6 +50,15 @@ export default config({
           label: "标签",
           itemLabel: (props) => props.value || "标签",
         }),
+        pinned: fields.checkbox({
+          label: "置顶（钉在列表顶部）",
+          defaultValue: false,
+        }),
+        draft: fields.checkbox({
+          label: "草稿（暂不公开）",
+          description: "勾选后仅本地可见、线上隐藏；想发布就取消勾选",
+          defaultValue: false,
+        }),
         cover: fields.image({
           label: "封面图（可选）",
           description: "点击上传；留空则用渐变占位",
@@ -95,6 +104,15 @@ export default config({
           label: "标签",
           itemLabel: (props) => props.value || "标签",
         }),
+        pinned: fields.checkbox({
+          label: "置顶（钉在列表顶部）",
+          defaultValue: false,
+        }),
+        draft: fields.checkbox({
+          label: "草稿（暂不公开）",
+          description: "勾选后仅本地可见、线上隐藏；想发布就取消勾选",
+          defaultValue: false,
+        }),
         content: fields.mdx({
           label: "正文",
           options: {
@@ -127,6 +145,15 @@ export default config({
         tags: fields.array(fields.text({ label: "标签" }), {
           label: "标签",
           itemLabel: (props) => props.value || "标签",
+        }),
+        pinned: fields.checkbox({
+          label: "置顶（钉在列表顶部）",
+          defaultValue: false,
+        }),
+        draft: fields.checkbox({
+          label: "草稿（暂不公开）",
+          description: "勾选后仅本地可见、线上隐藏；想发布就取消勾选",
+          defaultValue: false,
         }),
         cover: fields.image({
           label: "封面图（可选）",
@@ -166,6 +193,15 @@ export default config({
         tags: fields.array(fields.text({ label: "标签" }), {
           label: "标签",
           itemLabel: (props) => props.value || "标签",
+        }),
+        pinned: fields.checkbox({
+          label: "置顶（钉在列表顶部）",
+          defaultValue: false,
+        }),
+        draft: fields.checkbox({
+          label: "草稿（暂不公开）",
+          description: "勾选后仅本地可见、线上隐藏；想发布就取消勾选",
+          defaultValue: false,
         }),
         cover: fields.image({
           label: "配图（可选）",

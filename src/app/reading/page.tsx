@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Navbar } from "@/components/navbar";
+import { PinBadge } from "@/components/pin-badge";
 import { getAllReading } from "@/lib/reading";
 
 export default function ReadingPage() {
@@ -41,6 +42,7 @@ export default function ReadingPage() {
                   className="mb-4 h-44 w-full rounded-xl border border-white/10 object-cover"
                 />
               )}
+              {item.pinned && <PinBadge className="mb-2" />}
               <p className="mb-3 text-xs text-zinc-600">{item.date}</p>
               <h2 className="text-lg font-semibold text-white transition-colors group-hover:text-zinc-100">
                 {item.title}

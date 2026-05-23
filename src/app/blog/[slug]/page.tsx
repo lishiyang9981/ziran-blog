@@ -2,11 +2,16 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
+import rehypeSlug from "rehype-slug";
 
 import { Navbar } from "@/components/navbar";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { PreCopy } from "@/components/pre-copy";
+import { TagLink } from "@/components/tag-link";
+import { TableOfContents } from "@/components/table-of-contents";
+import { PostNav } from "@/components/post-nav";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
+import { getAdjacent } from "@/lib/content";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -68,6 +73,8 @@ export default async function PostPage({ params }: Props) {
 
   if (!post) notFound();
 
+  const { older, newer } = getAdjacent("blog", slug);
+
   return (
     <main className="page-bg relative min-h-screen overflow-hidden bg-[#050505] text-white">
       {/* Background grid */}
@@ -75,6 +82,7 @@ export default async function PostPage({ params }: Props) {
       <div className="pointer-events-none absolute right-0 top-0 h-[500px] w-[500px] -translate-y-1/3 translate-x-1/4 rounded-full bg-purple-500/[0.06] blur-3xl" />
       <ScrollProgress />
       <Navbar />
+      <TableOfContents />
 
       <article className="relative z-10 mx-auto max-w-3xl px-8 pb-24 pt-32">
 
@@ -109,12 +117,7 @@ export default async function PostPage({ params }: Props) {
           {post.tags?.length > 0 && (
             <div className="mt-5 flex flex-wrap gap-2">
               {post.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="tag-chip rounded-full border border-white/[0.08] px-3 py-1 text-xs text-zinc-500"
-                >
-                  {tag}
-                </span>
+                <TagLink key={tag} tag={tag} className="px-3 py-1 text-xs" />
               ))}
             </div>
           )}
@@ -158,13 +161,16 @@ export default async function PostPage({ params }: Props) {
         >
           <MDXRemote
             source={post.content}
-            options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+            options={{ mdxOptions: { remarkPlugins: [remarkGfm], rehypePlugins: [rehypeSlug] } }}
             components={MDX_COMPONENTS}
           />
         </div>
 
+        {/* 上一篇 / 下一篇 */}
+        <PostNav older={older} newer={newer} />
+
         {/* Footer nav */}
-        <div className="mt-16 border-t border-white/[0.07] pt-10">
+        <div className="mt-12 border-t border-white/[0.07] pt-10">
           <Link
             href="/blog"
             className="text-sm text-zinc-600 transition hover:text-white"

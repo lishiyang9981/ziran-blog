@@ -5,18 +5,9 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, X } from "lucide-react";
 
-import type { Post } from "@/lib/posts";
-import type { Note } from "@/lib/notes";
+import type { ContentItem } from "@/lib/content";
 
-type Item = (Post | Note) & { type: "post" | "note" };
-
-export function SearchModal({
-  posts,
-  notes,
-}: {
-  posts: Post[];
-  notes: Note[];
-}) {
+export function SearchModal({ items }: { items: ContentItem[] }) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -30,7 +21,6 @@ export function SearchModal({
       }
       if (e.key === "Escape") setOpen(false);
     };
-    /* Custom event from Navbar search button */
     const onOpenSearch = () => setOpen(true);
 
     window.addEventListener("keydown", onKey);
@@ -48,27 +38,19 @@ export function SearchModal({
     }
   }, [open]);
 
-  /* ── Filter results ── */
-  const results = useMemo<Item[]>(() => {
+  /* ── Filter results（标题/摘要/标签）── */
+  const results = useMemo<ContentItem[]>(() => {
     const q = query.trim().toLowerCase();
     if (!q) return [];
-    return [
-      ...posts
-        .filter(
-          (p) =>
-            p.title.toLowerCase().includes(q) ||
-            p.description.toLowerCase().includes(q)
-        )
-        .map((p) => ({ ...p, type: "post" as const })),
-      ...notes
-        .filter(
-          (n) =>
-            n.title.toLowerCase().includes(q) ||
-            n.description.toLowerCase().includes(q)
-        )
-        .map((n) => ({ ...n, type: "note" as const })),
-    ].slice(0, 8);
-  }, [query, posts, notes]);
+    return items
+      .filter(
+        (it) =>
+          it.title.toLowerCase().includes(q) ||
+          it.description.toLowerCase().includes(q) ||
+          (it.tags ?? []).some((t) => t.toLowerCase().includes(q))
+      )
+      .slice(0, 8);
+  }, [query, items]);
 
   return (
     <AnimatePresence>
@@ -101,7 +83,7 @@ export function SearchModal({
                 ref={inputRef}
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="搜索文章、日志..."
+                placeholder="搜索全站：文章、随笔、读书、生活、标签..."
                 className="flex-1 bg-transparent text-sm text-white placeholder:text-zinc-600 outline-none"
               />
               <button
@@ -116,14 +98,14 @@ export function SearchModal({
             {results.length > 0 ? (
               <ul className="max-h-80 overflow-y-auto py-2">
                 {results.map((item) => (
-                  <li key={`${item.type}-${item.slug}`}>
+                  <li key={`${item.section}-${item.slug}`}>
                     <Link
-                      href={`/${item.type === "post" ? "blog" : "notes"}/${item.slug}`}
+                      href={item.href}
                       onClick={() => setOpen(false)}
                       className="flex items-start gap-4 px-5 py-3 transition hover:bg-white/[0.04]"
                     >
                       <span className="mt-0.5 flex-shrink-0 rounded-full border border-white/10 px-2 py-0.5 text-[10px] text-zinc-500">
-                        {item.type === "post" ? "文章" : "日志"}
+                        {item.sectionLabel}
                       </span>
                       <div className="min-w-0">
                         <p className="text-sm font-medium text-zinc-200">
@@ -143,7 +125,7 @@ export function SearchModal({
               </div>
             ) : (
               <div className="px-5 py-8 text-center text-xs text-zinc-700">
-                输入关键词搜索文章和日志
+                输入关键词，搜索全站内容
               </div>
             )}
 

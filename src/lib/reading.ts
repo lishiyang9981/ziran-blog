@@ -6,6 +6,6 @@ const COVER_BASE = "/images/reading/covers";
 export type Reading = Entry;
 export type ReadingWithContent = EntryWithContent;
 
-export const getAllReading = (): Reading[] => loadEntries(DIR, COVER_BASE);
+export const getAllReading = (): Reading[] => loadEntries(DIR, { coverBase: COVER_BASE });
 export const getReadingBySlug = (slug: string): ReadingWithContent | null =>
-  loadEntry(DIR, slug, COVER_BASE);
+  loadEntry(DIR, slug, { coverBase: COVER_BASE });

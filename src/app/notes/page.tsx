@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Navbar } from "@/components/navbar";
+import { PinBadge } from "@/components/pin-badge";
 import { getAllNotes } from "@/lib/notes";
 
 export default function NotesPage() {
@@ -34,6 +35,7 @@ export default function NotesPage() {
               href={`/notes/${note.slug}`}
               className="card-item group rounded-[22px] border border-white/[0.07] bg-white/[0.02] p-6 backdrop-blur-sm transition-all duration-300 hover:border-white/12 hover:bg-white/[0.04]"
             >
+              {note.pinned && <PinBadge className="mb-2" />}
               <p className="mb-3 text-xs text-zinc-600">{note.date}</p>
               <h2 className="text-lg font-semibold text-white transition-colors group-hover:text-zinc-100">{note.title}</h2>
               <p className="mt-2 line-clamp-2 text-sm leading-6 text-zinc-500">{note.description}</p>

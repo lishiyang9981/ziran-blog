@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Navbar } from "@/components/navbar";
+import { PinBadge } from "@/components/pin-badge";
 import { getAllLife } from "@/lib/life";
 
 export default function LifePage() {
@@ -41,6 +42,7 @@ export default function LifePage() {
                   className="mb-4 h-44 w-full rounded-xl border border-white/10 object-cover"
                 />
               )}
+              {item.pinned && <PinBadge className="mb-2" />}
               <p className="mb-3 text-xs text-zinc-600">{item.date}</p>
               <h2 className="text-lg font-semibold text-white transition-colors group-hover:text-zinc-100">
                 {item.title}

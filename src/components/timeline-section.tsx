@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 export function TimelineSection() {
@@ -42,6 +43,12 @@ export function TimelineSection() {
             <p className="mt-1 text-xs text-zinc-600">
               在技术、思考与生活之间
             </p>
+            <Link
+              href="/tags"
+              className="mt-2 inline-block text-xs text-zinc-600 transition hover:text-zinc-300"
+            >
+              # 按标签浏览
+            </Link>
           </div>
           <p className="text-xs text-zinc-600">
             © 2026 CWR&amp;L. All rights reserved.

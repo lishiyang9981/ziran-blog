@@ -2,9 +2,15 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
+import rehypeSlug from "rehype-slug";
 
 import { Navbar } from "@/components/navbar";
+import { PreCopy } from "@/components/pre-copy";
+import { TagLink } from "@/components/tag-link";
+import { TableOfContents } from "@/components/table-of-contents";
+import { PostNav } from "@/components/post-nav";
 import { getAllNotes, getNoteBySlug } from "@/lib/notes";
+import { getAdjacent } from "@/lib/content";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -20,11 +26,14 @@ export default async function NotePage({ params }: Props) {
 
   if (!note) notFound();
 
+  const { older, newer } = getAdjacent("notes", slug);
+
   return (
     <main className="page-bg relative min-h-screen overflow-hidden bg-[#050505] text-white">
       <div className="page-grid pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(rgba(255,255,255,0.018)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.018)_1px,transparent_1px)] bg-[size:80px_80px]" />
       <div className="pointer-events-none absolute right-0 top-0 h-[400px] w-[400px] -translate-y-1/4 translate-x-1/4 rounded-full bg-emerald-500/[0.06] blur-3xl" />
       <Navbar />
+      <TableOfContents />
 
       <article className="relative z-10 mx-auto max-w-3xl px-8 pb-24 pt-32">
 
@@ -32,7 +41,7 @@ export default async function NotePage({ params }: Props) {
           href="/notes"
           className="mb-10 flex items-center gap-2 text-sm text-zinc-600 transition hover:text-white"
         >
-          ← 返回日志列表
+          ← 返回随笔
         </Link>
 
         <header className="mb-14">
@@ -46,12 +55,7 @@ export default async function NotePage({ params }: Props) {
           {note.tags?.length > 0 && (
             <div className="mt-5 flex flex-wrap gap-2">
               {note.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="tag-chip rounded-full border border-white/[0.08] px-3 py-1 text-xs text-zinc-500"
-                >
-                  {tag}
-                </span>
+                <TagLink key={tag} tag={tag} className="px-3 py-1 text-xs" />
               ))}
             </div>
           )}
@@ -74,16 +78,19 @@ export default async function NotePage({ params }: Props) {
         >
           <MDXRemote
             source={note.content}
-            options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+            options={{ mdxOptions: { remarkPlugins: [remarkGfm], rehypePlugins: [rehypeSlug] } }}
+            components={{ pre: PreCopy }}
           />
         </div>
 
-        <div className="mt-16 border-t border-white/[0.07] pt-10">
+        <PostNav older={older} newer={newer} />
+
+        <div className="mt-12 border-t border-white/[0.07] pt-10">
           <Link
             href="/notes"
             className="text-sm text-zinc-600 transition hover:text-white"
           >
-            ← 所有日志
+            ← 所有随笔
           </Link>
         </div>
 

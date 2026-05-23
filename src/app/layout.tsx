@@ -4,8 +4,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 
 import { SiteChrome }   from "@/components/site-chrome";
-import { getAllPosts }   from "@/lib/posts";
-import { getAllNotes }   from "@/lib/notes";
+import { getAllContent } from "@/lib/content";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,8 +16,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const posts = getAllPosts();
-  const notes = getAllNotes();
+  const items = getAllContent();
 
   return (
     <html lang="zh-CN" suppressHydrationWarning>
@@ -32,7 +30,7 @@ export default function RootLayout({
       </head>
       {/* 不加任何 filter 类，避免破坏 fixed 定位 */}
       <body className={inter.className}>
-        <SiteChrome posts={posts} notes={notes} />
+        <SiteChrome items={items} />
         {children}
       </body>
     </html>

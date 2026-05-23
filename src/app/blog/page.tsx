@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Navbar } from "@/components/navbar";
+import { PinBadge } from "@/components/pin-badge";
 import { getAllPosts } from "@/lib/posts";
 
 const COVER_GRADIENTS = [
@@ -63,6 +64,7 @@ export default function BlogPage() {
               </div>
 
               <div className="min-w-0 flex-1">
+                {post.pinned && <PinBadge className="mb-2" />}
                 <div className="flex items-start justify-between gap-3">
                   <h2 className="min-w-0 text-lg font-semibold text-white transition-colors group-hover:text-zinc-100 sm:text-xl">{post.title}</h2>
                   <span className="flex-shrink-0 text-xs text-zinc-600 sm:text-sm">{post.date}</span>
