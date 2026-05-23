@@ -180,21 +180,25 @@ function FlowerScene() {
    主组件：监听主题，平滑切换两个场景
 ═══════════════════════════════════════════════ */
 export function HeroVisual() {
-  const [isLight, setIsLight] = useState(() => {
-    if (typeof window !== "undefined") {
-      return document.documentElement.getAttribute("data-theme") === "light";
-    }
-    return false;
-  });
+  /* 始终以固定初始值渲染，避免 SSR(暗色) 与客户端(可能已是亮色) 的水合不匹配；
+     真实主题在挂载后由 effect 读取并切换 */
+  const [mounted, setMounted] = useState(false);
+  const [isLight, setIsLight] = useState(false);
 
   useEffect(() => {
     const root = document.documentElement;
     const update = () => setIsLight(root.getAttribute("data-theme") === "light");
     update();
+    setMounted(true);
     const obs = new MutationObserver(update);
     obs.observe(root, { attributes: true, attributeFilter: ["data-theme"] });
     return () => obs.disconnect();
   }, []);
+
+  /* 挂载前渲染等尺寸占位：服务端与首屏客户端一致，挂载后再淡入正确场景 */
+  if (!mounted) {
+    return <div className="h-[580px] w-[580px]" aria-hidden />;
+  }
 
   return (
     <AnimatePresence mode="wait">
