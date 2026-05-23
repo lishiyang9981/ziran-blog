@@ -13,7 +13,7 @@ export default config({
   ui: {
     brand: { name: "CWR&L 博客后台" },
     navigation: {
-      内容: ["blog", "notes"],
+      内容: ["blog", "notes", "reading", "life"],
     },
   },
 
@@ -55,9 +55,9 @@ export default config({
       },
     }),
 
-    /* ── 学习日志 → content/notes/*.mdx ── */
+    /* ── 随笔（随想碎思）→ content/notes/*.mdx ── */
     notes: collection({
-      label: "日志",
+      label: "随笔",
       slugField: "title",
       path: "content/notes/*",
       format: { contentField: "content" },
@@ -81,6 +81,64 @@ export default config({
         tags: fields.array(fields.text({ label: "标签" }), {
           label: "标签",
           itemLabel: (props) => props.value || "标签",
+        }),
+        content: fields.mdx({ label: "正文" }),
+      },
+    }),
+
+    /* ── 读书 → content/reading/*.mdx ── */
+    reading: collection({
+      label: "读书",
+      slugField: "title",
+      path: "content/reading/*",
+      format: { contentField: "content" },
+      entryLayout: "content",
+      schema: {
+        title: fields.slug({
+          name: { label: "书名 / 标题", validation: { isRequired: true } },
+          slug: {
+            label: "URL 路径",
+            description: "英文短横线，用作文件名与链接",
+          },
+        }),
+        date: fields.date({ label: "日期", validation: { isRequired: true } }),
+        description: fields.text({ label: "摘要", multiline: true }),
+        tags: fields.array(fields.text({ label: "标签" }), {
+          label: "标签",
+          itemLabel: (props) => props.value || "标签",
+        }),
+        cover: fields.text({
+          label: "封面图（可选）",
+          description: "书封或配图路径，如 /images/xxx.jpg",
+        }),
+        content: fields.mdx({ label: "正文" }),
+      },
+    }),
+
+    /* ── 生活 → content/life/*.mdx ── */
+    life: collection({
+      label: "生活",
+      slugField: "title",
+      path: "content/life/*",
+      format: { contentField: "content" },
+      entryLayout: "content",
+      schema: {
+        title: fields.slug({
+          name: { label: "标题", validation: { isRequired: true } },
+          slug: {
+            label: "URL 路径",
+            description: "英文短横线，用作文件名与链接",
+          },
+        }),
+        date: fields.date({ label: "日期", validation: { isRequired: true } }),
+        description: fields.text({ label: "摘要", multiline: true }),
+        tags: fields.array(fields.text({ label: "标签" }), {
+          label: "标签",
+          itemLabel: (props) => props.value || "标签",
+        }),
+        cover: fields.text({
+          label: "配图（可选）",
+          description: "图片路径，如 /images/xxx.jpg",
         }),
         content: fields.mdx({ label: "正文" }),
       },

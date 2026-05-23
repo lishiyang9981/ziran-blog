@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 import type { Post } from "@/lib/posts";
+import type { Reading } from "@/lib/reading";
 
 const COVER_GRADIENTS = [
   "from-purple-500/25 to-blue-600/10",
@@ -13,12 +14,6 @@ const COVER_GRADIENTS = [
   "from-amber-500/20 to-orange-600/10",
 ];
 
-const LAB_ITEMS = [
-  { title: "RAG 实践笔记",  desc: "构建知识库与问答系统" },
-  { title: "LLM 应用探索", desc: "探索大语言模型的应用边界" },
-  { title: "AI 工具评测",   desc: "测评与分享优秀的 AI 工具" },
-];
-
 const FADE = (delay = 0) => ({
   initial: { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0 },
@@ -26,7 +21,7 @@ const FADE = (delay = 0) => ({
   transition: { duration: 0.5, delay },
 });
 
-export function ContentSection({ posts }: { posts: Post[] }) {
+export function ContentSection({ posts, reading }: { posts: Post[]; reading: Reading[] }) {
   return (
     <section className="relative z-10 mx-auto mt-2 grid max-w-[1400px] grid-cols-1 gap-5 px-8 pb-6 lg:grid-cols-[1.65fr_1fr]">
 
@@ -96,57 +91,45 @@ export function ContentSection({ posts }: { posts: Post[] }) {
         </div>
       </motion.div>
 
-      {/* ── AI Lab ──────────────────────────── */}
+      {/* ── 近期读书 ─────────────────────────── */}
       <motion.div
         {...FADE(0.1)}
         className="card-item overflow-hidden rounded-[28px] border border-white/[0.07] bg-white/[0.02] p-8 backdrop-blur"
       >
         <div className="mb-7 flex items-center justify-between">
-          <h2 className="text-[22px] font-semibold text-white">AI Lab</h2>
-          <Link href="/lab" className="text-sm text-zinc-500 transition hover:text-white">
-            进入实验室 →
+          <h2 className="text-[22px] font-semibold text-white">近期读书</h2>
+          <Link href="/reading" className="text-sm text-zinc-500 transition hover:text-white">
+            查看全部 →
           </Link>
         </div>
 
-        <div className="card-item relative mb-7 flex h-[200px] items-center justify-center overflow-hidden rounded-[20px] border border-white/[0.07] bg-black/20">
-          <div className="absolute h-36 w-36 rounded-full bg-purple-500/20 blur-3xl" />
-          <div
-            className="relative h-28 w-28 rounded-full"
-            style={{
-              background: "radial-gradient(circle at 30% 30%, rgba(255,255,255,0.92), rgba(168,85,247,0.42), rgba(0,0,0,0.97))",
-              boxShadow: "0 0 50px rgba(168,85,247,0.3)",
-            }}
-          />
-          <p className="absolute bottom-4 text-[11px] tracking-[0.25em] text-zinc-600">
-            探索 AI 技术的边界
-          </p>
-        </div>
-
         <div className="space-y-2.5">
-          {LAB_ITEMS.map((item, i) => (
+          {reading.slice(0, 5).map((item, i) => (
             <motion.div
-              key={item.title}
+              key={item.slug}
               initial={{ opacity: 0, x: 16 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.08 }}
             >
               <Link
-                href="/lab"
-                className="card-item flex items-center justify-between rounded-xl border border-white/[0.07] bg-white/[0.02] px-4 py-3.5 transition-all duration-300 hover:bg-white/[0.04]"
+                href={`/reading/${item.slug}`}
+                className="card-item block rounded-xl border border-white/[0.07] bg-white/[0.02] px-4 py-3.5 transition-all duration-300 hover:bg-white/[0.04]"
               >
-                <div>
-                  <p className="text-sm font-medium text-zinc-200">{item.title}</p>
-                  <p className="mt-0.5 text-xs text-zinc-600">{item.desc}</p>
-                </div>
-                <span className="text-xs text-zinc-600">→</span>
+                <p className="line-clamp-1 text-sm font-medium text-zinc-200">{item.title}</p>
+                <p className="mt-0.5 line-clamp-1 text-xs text-zinc-600">{item.description}</p>
               </Link>
             </motion.div>
           ))}
+          {reading.length === 0 && (
+            <p className="py-10 text-center text-sm text-zinc-600">
+              还没有读书记录
+            </p>
+          )}
         </div>
 
-        <Link href="/lab" className="mt-4 block text-center text-xs text-zinc-600 transition hover:text-zinc-400">
-          更多实验记录 →
+        <Link href="/reading" className="mt-4 block text-center text-xs text-zinc-600 transition hover:text-zinc-400">
+          更多读书笔记 →
         </Link>
       </motion.div>
 

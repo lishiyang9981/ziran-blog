@@ -6,12 +6,12 @@ import { usePathname } from "next/navigation";
 import { Search, Menu, X } from "lucide-react";
 
 const NAV_ITEMS = [
-  { label: "首页",   href: "/" },
-  { label: "文章",   href: "/blog" },
-  { label: "日志",   href: "/notes" },
-  { label: "项目",   href: "/projects" },
-  { label: "实验室", href: "/lab" },
-  { label: "关于我们", href: "/about" },
+  { label: "首页", href: "/" },
+  { label: "文章", href: "/blog" },
+  { label: "随笔", href: "/notes" },
+  { label: "读书", href: "/reading" },
+  { label: "生活", href: "/life" },
+  { label: "关于", href: "/about" },
 ];
 
 const THEMES = [

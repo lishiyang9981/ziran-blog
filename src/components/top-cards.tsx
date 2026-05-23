@@ -2,12 +2,12 @@
 
 import Link from "next/link";
 import { motion, useMotionValue, useTransform } from "framer-motion";
-import { FileText, BookOpen, FolderOpen, FlaskConical } from "lucide-react";
+import { FileText, Feather, BookOpen, Coffee } from "lucide-react";
 
 const CARDS = [
   {
     title: "文章",
-    desc: "技术文章与思考笔记",
+    desc: "技术、哲学与认知的长文",
     icon: FileText,
     glow: "from-blue-500/20 to-cyan-500/10",
     iconBg: "from-blue-500/30 to-cyan-500/20",
@@ -15,31 +15,31 @@ const CARDS = [
     href: "/blog",
   },
   {
-    title: "学习日志",
-    desc: "记录每一次学习与成长",
-    icon: BookOpen,
-    glow: "from-green-500/20 to-emerald-500/10",
-    iconBg: "from-green-500/30 to-emerald-500/20",
-    iconColor: "text-emerald-300",
-    href: "/notes",
-  },
-  {
-    title: "项目",
-    desc: "一些有趣的尝试与实践",
-    icon: FolderOpen,
+    title: "随笔",
+    desc: "随想、碎念与灵感片段",
+    icon: Feather,
     glow: "from-purple-500/20 to-fuchsia-500/10",
     iconBg: "from-purple-500/30 to-fuchsia-500/20",
     iconColor: "text-purple-300",
-    href: "/projects",
+    href: "/notes",
   },
   {
-    title: "AI Lab",
-    desc: "探索 AI 与未来的可能性",
-    icon: FlaskConical,
-    glow: "from-pink-500/20 to-purple-500/10",
-    iconBg: "from-pink-500/30 to-purple-500/20",
-    iconColor: "text-pink-300",
-    href: "/lab",
+    title: "读书",
+    desc: "读过的书与记下的思考",
+    icon: BookOpen,
+    glow: "from-amber-500/20 to-orange-500/10",
+    iconBg: "from-amber-500/30 to-orange-500/20",
+    iconColor: "text-amber-300",
+    href: "/reading",
+  },
+  {
+    title: "生活",
+    desc: "日常、行走与生活记录",
+    icon: Coffee,
+    glow: "from-rose-500/20 to-pink-500/10",
+    iconBg: "from-rose-500/30 to-pink-500/20",
+    iconColor: "text-rose-300",
+    href: "/life",
   },
 ];
 

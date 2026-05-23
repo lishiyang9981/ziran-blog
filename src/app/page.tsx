@@ -7,11 +7,13 @@ import { LearningLog } from "@/components/learning-log";
 import { TimelineSection } from "@/components/timeline-section";
 import { getAllPosts } from "@/lib/posts";
 import { getAllNotes } from "@/lib/notes";
+import { getAllReading } from "@/lib/reading";
 
 
 export default function Home() {
   const posts = getAllPosts().slice(0, 4);
   const notes = getAllNotes().slice(0, 8);
+  const reading = getAllReading().slice(0, 5);
 
   return (
     <main className="page-bg relative min-h-screen overflow-x-hidden bg-[#050505] text-white">
@@ -45,7 +47,7 @@ export default function Home() {
       </section>
 
       <TopCards />
-      <ContentSection posts={posts} />
+      <ContentSection posts={posts} reading={reading} />
       <LearningLog notes={notes} />
       <TimelineSection />
 

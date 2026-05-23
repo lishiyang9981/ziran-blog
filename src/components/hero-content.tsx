@@ -28,14 +28,14 @@ export function HeroContent() {
         className="text-5xl font-semibold leading-[1.08] tracking-[-0.04em] lg:text-6xl 2xl:text-7xl"
       >
         <span className="hero-title block bg-gradient-to-b from-white via-white to-zinc-400 bg-clip-text text-transparent">
-          持续探索
+          在技术、思考与
         </span>
         <span className="block">
-          <span className="hero-title bg-gradient-to-b from-white via-white to-zinc-400 bg-clip-text text-transparent">
-            技术与认知的
-          </span>
           <span className="bg-gradient-to-r from-purple-300 to-purple-500 bg-clip-text text-transparent">
-            边界
+            生活
+          </span>
+          <span className="hero-title bg-gradient-to-b from-white via-white to-zinc-400 bg-clip-text text-transparent">
+            之间
           </span>
         </span>
       </motion.h1>
@@ -47,7 +47,7 @@ export function HeroContent() {
       >
         用代码构建系统，用思考理解世界，
         <br />
-        在技术与哲学之间寻找更深层的确定性。
+        用文字安放生活。
       </motion.p>
 
       {/* CTA */}

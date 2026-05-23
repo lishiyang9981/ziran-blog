@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "CWR&L",
-  description: "持续探索技术与认知的边界",
+  description: "在技术、思考与生活之间",
 };
 
 export default function RootLayout({
