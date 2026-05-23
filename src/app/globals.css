@@ -120,6 +120,34 @@ h1 {
   letter-spacing: 0.04em;
 }
 
+/* ── 草稿标记（琥珀）：暗色用亮琥珀，亮色用深琥珀以保证可读 ── */
+.draft-amber {
+  color: #fcd34d;
+  border-color: rgba(251, 191, 36, 0.4);
+  background-color: rgba(251, 191, 36, 0.1);
+}
+[data-theme="light"] .draft-amber {
+  color: #92400e;
+  border-color: rgba(180, 83, 9, 0.35);
+  background-color: rgba(180, 83, 9, 0.08);
+}
+
+/* ── 导航动作（标签 / 写文章 / 编辑此篇）按 data-tone 着色 ── */
+.nav-pill[data-tone="tags"]  { color: var(--accent); border-color: rgba(var(--accent-rgb),0.4); background: rgba(var(--accent-rgb),0.12); box-shadow: 0 0 12px rgba(var(--accent-rgb),0.15); }
+.nav-pill[data-tone="write"] { color: #7dd3fc; border-color: rgba(56,189,248,0.45); background: rgba(56,189,248,0.12); box-shadow: 0 0 12px rgba(56,189,248,0.15); }
+.nav-pill[data-tone="edit"]  { color: #fcd34d; border-color: rgba(251,191,36,0.45); background: rgba(251,191,36,0.12); box-shadow: 0 0 12px rgba(251,191,36,0.15); }
+/* 亮色：加深文字与边框，避免浅色在白底上看不清 */
+[data-theme="light"] .nav-pill[data-tone="tags"]  { color: #2a7040; }
+[data-theme="light"] .nav-pill[data-tone="write"] { color: #0369a1; border-color: rgba(3,105,161,0.4); background: rgba(3,105,161,0.1); box-shadow: none; }
+[data-theme="light"] .nav-pill[data-tone="edit"]  { color: #b45309; border-color: rgba(180,83,9,0.4); background: rgba(180,83,9,0.1); box-shadow: none; }
+
+.nav-row-icon[data-tone="tags"]  { color: var(--accent); }
+.nav-row-icon[data-tone="write"] { color: #7dd3fc; }
+.nav-row-icon[data-tone="edit"]  { color: #fcd34d; }
+[data-theme="light"] .nav-row-icon[data-tone="tags"]  { color: #2a7040; }
+[data-theme="light"] .nav-row-icon[data-tone="write"] { color: #0369a1; }
+[data-theme="light"] .nav-row-icon[data-tone="edit"]  { color: #b45309; }
+
 /* 强调色滚动条 hover（科技感）*/
 ::-webkit-scrollbar-thumb:hover { background: rgba(var(--accent-rgb), 0.45); }
 

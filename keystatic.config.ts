@@ -25,6 +25,7 @@ export default config({
     blog: collection({
       label: "见山（长文）",
       slugField: "title",
+      columns: ["title"],
       path: "content/blog/*",
       format: { contentField: "content" },
       entryLayout: "content",
@@ -81,6 +82,7 @@ export default config({
     notes: collection({
       label: "从心（随笔）",
       slugField: "title",
+      columns: ["title"],
       path: "content/notes/*",
       format: { contentField: "content" },
       entryLayout: "content",
@@ -129,6 +131,7 @@ export default config({
     reading: collection({
       label: "观澜（书影）",
       slugField: "title",
+      columns: ["title"],
       path: "content/reading/*",
       format: { contentField: "content" },
       entryLayout: "content",
@@ -177,6 +180,7 @@ export default config({
     life: collection({
       label: "止水（生活）",
       slugField: "title",
+      columns: ["title"],
       path: "content/life/*",
       format: { contentField: "content" },
       entryLayout: "content",
