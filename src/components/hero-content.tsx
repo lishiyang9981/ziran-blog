@@ -28,7 +28,7 @@ export function HeroContent() {
         className="font-art text-5xl font-semibold leading-[1.08] tracking-[-0.04em] lg:text-6xl 2xl:text-7xl"
       >
         <span className="hero-title block bg-gradient-to-b from-white via-white to-zinc-400 bg-clip-text text-transparent">
-          在技术、思考与
+          在自然、思考与
         </span>
         <span className="block">
           <span className="bg-gradient-to-r from-purple-300 to-purple-500 bg-clip-text text-transparent">
@@ -45,7 +45,7 @@ export function HeroContent() {
         {...FADE_UP(0.3)}
         className="mt-6 max-w-md text-[15px] leading-8 text-zinc-500"
       >
-        用代码构建系统，用思考理解世界，
+        用自然浸润身心，用思考理解世界，
         <br />
         用文字安放生活。
       </motion.p>
