@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 /* ────────────────────────────────────────────────────────────
    博客内容自动同步
-   监听 content/ 目录，文件变动（新增/修改/删除）后防抖一段时间，
-   自动 git add → commit → push，免去手动提交。
+   监听 content/ 与 public/images/ 目录，文件变动（新增/修改/删除）后
+   防抖一段时间，自动 git add → commit → push，免去手动提交。
+   （Keystatic 上传的正文图/封面会落到 public/images/，所以一并纳入）
 
    用法：
-     pnpm autosync              # 正常运行（会真的提交并推送）
+     pnpm autosync                      # 正常运行（会真的提交并推送）
      AUTOSYNC_DRY_RUN=1 pnpm autosync   # 演练，只打印不提交
    可选环境变量：
      AUTOSYNC_DEBOUNCE=6000     # 防抖毫秒数（默认 6000）
@@ -14,7 +15,7 @@
    说明：基于 fs.watch 的 recursive 模式（macOS / Windows 支持）。
 ──────────────────────────────────────────────────────────── */
 
-import { watch } from "node:fs";
+import { watch, existsSync } from "node:fs";
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 import path from "node:path";
@@ -22,7 +23,7 @@ import path from "node:path";
 const run = promisify(execFile);
 
 const ROOT = process.cwd();
-const WATCH_DIR = path.join(ROOT, "content");
+const WATCH_DIRS = ["content", "public/images"];
 const DEBOUNCE_MS = Number(process.env.AUTOSYNC_DEBOUNCE ?? 6000);
 const BRANCH = process.env.AUTOSYNC_BRANCH ?? "main";
 const DRY_RUN = process.env.AUTOSYNC_DRY_RUN === "1";
@@ -43,8 +44,8 @@ async function sync() {
   if (running) { queued = true; return; }
   running = true;
   try {
-    const status = (await git(["status", "--porcelain", "--", "content"])).trim();
-    if (!status) { log("content/ 无改动，跳过"); return; }
+    const status = (await git(["status", "--porcelain", "--", ...WATCH_DIRS])).trim();
+    if (!status) { log("无改动，跳过"); return; }
 
     const files = status
       .split("\n")
@@ -61,7 +62,7 @@ async function sync() {
       return;
     }
 
-    await git(["add", "--", "content"]);
+    await git(["add", "--", ...WATCH_DIRS]);
     await git(["commit", "-m", msg]);
     log("已提交：", msg);
     await git(["push", "origin", BRANCH]);
@@ -81,16 +82,20 @@ function schedule() {
 }
 
 log(
-  `开始监听 ${path.relative(ROOT, WATCH_DIR)}/（防抖 ${DEBOUNCE_MS}ms，分支 ${BRANCH}` +
+  `开始监听 ${WATCH_DIRS.join("、")}/（防抖 ${DEBOUNCE_MS}ms，分支 ${BRANCH}` +
     (DRY_RUN ? "，演练模式" : "") +
     "）"
 );
 log("按 Ctrl+C 停止");
 
-watch(WATCH_DIR, { recursive: true }, (_event, filename) => {
-  if (!filename) return;
-  const base = path.basename(filename);
-  if (base === ".DS_Store" || base.endsWith("~") || base.startsWith(".")) return;
-  log(`检测到变更：${filename}`);
-  schedule();
-});
+for (const rel of WATCH_DIRS) {
+  const dir = path.join(ROOT, rel);
+  if (!existsSync(dir)) continue;
+  watch(dir, { recursive: true }, (_event, filename) => {
+    if (!filename) return;
+    const base = path.basename(filename);
+    if (base === ".DS_Store" || base.endsWith("~") || base.startsWith(".")) return;
+    log(`检测到变更：${rel}/${filename}`);
+    schedule();
+  });
+}

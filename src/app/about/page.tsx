@@ -26,8 +26,8 @@ export default function AboutPage() {
               关于我们
             </h1>
             <div className="space-y-5 text-[15px] leading-8 text-zinc-400">
-              <p>热忱者 · 共鸣者 · ENFJ · 金 牛</p>
-              <p>探索者 · 思考者 · INFP · 狮 子</p>
+              <p>她: 热忱者 · 共鸣者 · ENFJ · 金 牛</p>
+              <p>他: 探索者 · 思考者 · INFP · 狮 子</p>
               <p>
                 希望余生的我们，能修炼五样东西：扬在脸上的自信，长在心底的善良，
                 融进血里的骨气，清风拂面的温柔，刻进命里的坚强。

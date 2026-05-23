@@ -5,6 +5,9 @@ import { config, fields, collection } from "@keystatic/core";
    - 直接读写 content/ 下的 .mdx 文件
    - 在本机 http://localhost:3000/keystatic 编辑，写完照常 git push
    - 后台仅本地可用：生产环境由 middleware 屏蔽（见 src/middleware.ts）
+
+   图片：正文与封面里上传的图片都存到 public/images/<板块>/，
+   并以 /images/<板块>/... 的绝对路径写入，确保页面能正常显示。
 ──────────────────────────────────────────────── */
 
 export default config({
@@ -47,11 +50,21 @@ export default config({
           label: "标签",
           itemLabel: (props) => props.value || "标签",
         }),
-        cover: fields.text({
+        cover: fields.image({
           label: "封面图（可选）",
-          description: "图片路径，如 /images/xxx.jpg；留空则用渐变占位",
+          description: "点击上传；留空则用渐变占位",
+          directory: "public/images/blog/covers",
+          publicPath: "/images/blog/covers",
         }),
-        content: fields.mdx({ label: "正文" }),
+        content: fields.mdx({
+          label: "正文",
+          options: {
+            image: {
+              directory: "public/images/blog",
+              publicPath: "/images/blog",
+            },
+          },
+        }),
       },
     }),
 
@@ -82,7 +95,15 @@ export default config({
           label: "标签",
           itemLabel: (props) => props.value || "标签",
         }),
-        content: fields.mdx({ label: "正文" }),
+        content: fields.mdx({
+          label: "正文",
+          options: {
+            image: {
+              directory: "public/images/notes",
+              publicPath: "/images/notes",
+            },
+          },
+        }),
       },
     }),
 
@@ -107,11 +128,21 @@ export default config({
           label: "标签",
           itemLabel: (props) => props.value || "标签",
         }),
-        cover: fields.text({
+        cover: fields.image({
           label: "封面图（可选）",
-          description: "书封或配图路径，如 /images/xxx.jpg",
+          description: "点击上传书封或配图",
+          directory: "public/images/reading/covers",
+          publicPath: "/images/reading/covers",
         }),
-        content: fields.mdx({ label: "正文" }),
+        content: fields.mdx({
+          label: "正文",
+          options: {
+            image: {
+              directory: "public/images/reading",
+              publicPath: "/images/reading",
+            },
+          },
+        }),
       },
     }),
 
@@ -136,11 +167,21 @@ export default config({
           label: "标签",
           itemLabel: (props) => props.value || "标签",
         }),
-        cover: fields.text({
+        cover: fields.image({
           label: "配图（可选）",
-          description: "图片路径，如 /images/xxx.jpg",
+          description: "点击上传",
+          directory: "public/images/life/covers",
+          publicPath: "/images/life/covers",
         }),
-        content: fields.mdx({ label: "正文" }),
+        content: fields.mdx({
+          label: "正文",
+          options: {
+            image: {
+              directory: "public/images/life",
+              publicPath: "/images/life",
+            },
+          },
+        }),
       },
     }),
   },

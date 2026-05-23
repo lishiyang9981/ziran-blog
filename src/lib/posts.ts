@@ -3,7 +3,10 @@ import path from "path";
 
 import matter from "gray-matter";
 
+import { resolveAsset } from "./content";
+
 const postsDir = path.join(process.cwd(), "content/blog");
+const COVER_BASE = "/images/blog/covers";
 
 /* 归一化日期为 YYYY-MM-DD 字符串
    （Keystatic 可能写出无引号日期，js-yaml 会解析成 Date 对象）*/
@@ -39,7 +42,7 @@ export function getAllPosts(): Post[] {
         date: toDateStr(data.date),
         description: data.description ?? "",
         tags: data.tags ?? [],
-        cover: data.cover,
+        cover: resolveAsset(data.cover, COVER_BASE),
       } as Post;
     })
     .sort((a, b) => (a.date > b.date ? -1 : 1));
@@ -59,6 +62,6 @@ export function getPostBySlug(slug: string): PostWithContent | null {
     date: toDateStr(data.date),
     description: data.description ?? "",
     tags: data.tags ?? [],
-    cover: data.cover,
+    cover: resolveAsset(data.cover, COVER_BASE),
   };
 }

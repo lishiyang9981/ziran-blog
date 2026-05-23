@@ -24,7 +24,17 @@ function toDateStr(v: unknown): string {
   return typeof v === "string" ? v : v == null ? "" : String(v);
 }
 
-export function loadEntries(relDir: string): Entry[] {
+/* 归一化封面/图片路径：
+   - 已是绝对路径(/...)或外链(http) → 原样返回
+   - 裸文件名 → 拼上该板块的 publicPath（兼容 Keystatic image 字段的存储）*/
+export function resolveAsset(value: unknown, publicBase?: string): string | undefined {
+  if (typeof value !== "string" || value.length === 0) return undefined;
+  if (/^https?:\/\//.test(value) || value.startsWith("/")) return value;
+  if (!publicBase) return value;
+  return `${publicBase.replace(/\/+$/, "")}/${value.replace(/^\/+/, "")}`;
+}
+
+export function loadEntries(relDir: string, coverBase?: string): Entry[] {
   const dir = path.join(process.cwd(), relDir);
   if (!fs.existsSync(dir)) return [];
 
@@ -40,13 +50,17 @@ export function loadEntries(relDir: string): Entry[] {
         date: toDateStr(data.date),
         description: data.description ?? "",
         tags: data.tags ?? [],
-        cover: data.cover,
+        cover: resolveAsset(data.cover, coverBase),
       } as Entry;
     })
     .sort((a, b) => (a.date > b.date ? -1 : 1));
 }
 
-export function loadEntry(relDir: string, slug: string): EntryWithContent | null {
+export function loadEntry(
+  relDir: string,
+  slug: string,
+  coverBase?: string
+): EntryWithContent | null {
   const full = path.join(process.cwd(), relDir, `${slug}.mdx`);
   if (!fs.existsSync(full)) return null;
 
@@ -58,6 +72,6 @@ export function loadEntry(relDir: string, slug: string): EntryWithContent | null
     date: toDateStr(data.date),
     description: data.description ?? "",
     tags: data.tags ?? [],
-    cover: data.cover,
+    cover: resolveAsset(data.cover, coverBase),
   };
 }
