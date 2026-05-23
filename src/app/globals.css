@@ -113,6 +113,13 @@ h1, h2, h3, .hero-title { text-wrap: balance; }
   line-height: 1.3;
 }
 
+/* 所有页面大标题(h1)统一用艺术字，整体协调；正文内的 h2/h3 小标题不受影响 */
+h1 {
+  font-family: "ZCOOL XiaoWei", "Inter Variable", "PingFang SC", serif;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
 /* 强调色滚动条 hover（科技感）*/
 ::-webkit-scrollbar-thumb:hover { background: rgba(var(--accent-rgb), 0.45); }
 
