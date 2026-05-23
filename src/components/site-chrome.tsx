@@ -7,7 +7,6 @@ import { SearchModal }  from "@/components/search-modal";
 import { RightSidebar } from "@/components/right-sidebar";
 import { BackToTop }    from "@/components/back-to-top";
 import { KeystaticBar } from "@/components/keystatic-bar";
-import { NewPostButton } from "@/components/new-post-button";
 import type { ContentItem } from "@/lib/content";
 
 /* 站点装饰层：在 /keystatic 后台路径下只显示一个返回浮条，
@@ -22,7 +21,6 @@ export function SiteChrome({ items }: { items: ContentItem[] }) {
       <SearchModal items={items} />
       <RightSidebar />
       <BackToTop />
-      <NewPostButton />
     </>
   );
 }

@@ -10,7 +10,6 @@ import { TagLink } from "@/components/tag-link";
 import { TableOfContents } from "@/components/table-of-contents";
 import { PostNav } from "@/components/post-nav";
 import { DraftNotice } from "@/components/draft-badge";
-import { EditInKeystatic } from "@/components/edit-in-keystatic";
 import { getAllReading, getReadingBySlug } from "@/lib/reading";
 import { getAdjacent } from "@/lib/content";
 
@@ -36,7 +35,6 @@ export default async function ReadingDetail({ params }: Props) {
       <div className="pointer-events-none absolute right-0 top-0 h-[450px] w-[450px] -translate-y-1/3 translate-x-1/4 rounded-full bg-amber-500/[0.06] blur-3xl" />
       <Navbar />
       <TableOfContents />
-      <EditInKeystatic section="reading" slug={slug} />
 
       <article className="relative z-10 mx-auto max-w-3xl px-8 pb-24 pt-32">
 

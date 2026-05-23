@@ -5,6 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Search, Menu, X } from "lucide-react";
 
+import { NavActions } from "@/components/nav-actions";
+
 const NAV_ITEMS = [
   { label: "首页", href: "/" },
   { label: "文章", href: "/blog" },
@@ -82,8 +84,8 @@ export function Navbar() {
           </span>
         </Link>
 
-        {/* 导航链接（桌面端） */}
-        <nav className="hidden flex-1 items-center justify-center gap-0.5 md:flex">
+        {/* 导航链接（桌面端 xl+，iPad 及以下走汉堡菜单） */}
+        <nav className="hidden flex-1 items-center justify-center gap-0.5 xl:flex">
           {NAV_ITEMS.map(({ label, href }) => {
             const active = href === "/" ? pathname === "/" : pathname.startsWith(href);
             return (
@@ -128,11 +130,11 @@ export function Navbar() {
             </span>
           </button>
 
-          {/* 汉堡菜单（仅移动端可见） */}
+          {/* 汉堡菜单（移动端 / iPad 可见，xl 以下） */}
           <button
             onClick={() => setMenuOpen(o => !o)}
             aria-label="导航菜单"
-            className="md:hidden flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-zinc-500 transition hover:border-white/20 hover:text-white"
+            className="xl:hidden flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-zinc-500 transition hover:border-white/20 hover:text-white"
           >
             {menuOpen
               ? <X className="h-4 w-4" />
@@ -169,23 +171,8 @@ export function Navbar() {
             );
           })}
 
-          {/* 标签入口（移动端随导航一起）*/}
-          <Link
-            href="/tags"
-            onClick={() => setMenuOpen(false)}
-            className={`mt-1 flex items-center gap-2.5 border-t border-white/[0.06] px-4 py-2.5 text-sm transition-colors ${
-              pathname.startsWith("/tags")
-                ? "font-medium text-white"
-                : "text-zinc-500 hover:text-zinc-300"
-            }`}
-          >
-            <span
-              className={`h-1.5 w-1.5 flex-shrink-0 rounded-full transition-all ${
-                pathname.startsWith("/tags") ? "bg-purple-400" : "bg-transparent"
-              }`}
-            />
-            按标签浏览
-          </Link>
+          {/* 动作组：标签 / 写文章 / 编辑此篇（后两者仅本地显示）*/}
+          <NavActions variant="menu" onNavigate={() => setMenuOpen(false)} />
         </div>
       )}
 
