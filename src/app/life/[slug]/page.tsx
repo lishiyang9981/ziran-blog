@@ -42,7 +42,7 @@ export default async function LifeDetail({ params }: Props) {
           href="/life"
           className="mb-10 flex items-center gap-2 text-sm text-zinc-600 transition hover:text-white"
         >
-          ← 返回生活
+          ← 返回止水
         </Link>
 
         {item.draft && <DraftNotice />}
@@ -106,7 +106,7 @@ export default async function LifeDetail({ params }: Props) {
             href="/life"
             className="text-sm text-zinc-600 transition hover:text-white"
           >
-            ← 所有生活
+            ← 所有止水
           </Link>
         </div>
 

@@ -42,7 +42,7 @@ export default async function NotePage({ params }: Props) {
           href="/notes"
           className="mb-10 flex items-center gap-2 text-sm text-zinc-600 transition hover:text-white"
         >
-          ← 返回随笔
+          ← 返回从心
         </Link>
 
         {note.draft && <DraftNotice />}
@@ -93,7 +93,7 @@ export default async function NotePage({ params }: Props) {
             href="/notes"
             className="text-sm text-zinc-600 transition hover:text-white"
           >
-            ← 所有随笔
+            ← 所有从心
           </Link>
         </div>
 

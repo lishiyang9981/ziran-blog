@@ -22,11 +22,14 @@ export default function LifePage() {
       <div className="relative z-10 mx-auto max-w-4xl px-8 pb-24 pt-32">
 
         <div className="mb-16">
-          <p className="mb-3 text-xs tracking-[0.35em] text-zinc-600">LIFE</p>
+          <p className="mb-3 text-xs tracking-[0.35em] text-zinc-600">生活</p>
           <h1 className="bg-gradient-to-b from-white to-zinc-500 bg-clip-text text-6xl font-semibold tracking-tight text-transparent">
-            生活
+            止水
           </h1>
-          <p className="mt-4 text-zinc-500">日常、行走与生活里那些细碎的好。</p>
+          <p className="mt-4 text-zinc-500">回归本真，柴米油盐里的日常定力。</p>
+          <p className="mt-3 text-sm tracking-[0.2em]" style={{ color: "var(--accent)" }}>
+            落地与安宁
+          </p>
         </div>
 
         <Paginated perPage={8} className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -73,7 +76,7 @@ export default function LifePage() {
 
         {items.length === 0 && (
           <div className="card-item rounded-[24px] border border-white/[0.07] bg-white/[0.02] p-16 text-center backdrop-blur-sm">
-            <p className="text-zinc-600">还没有生活记录，去 /keystatic 写第一篇吧。</p>
+            <p className="text-zinc-600">止水还空着，去 /keystatic 写第一篇吧。</p>
           </div>
         )}
       </div>

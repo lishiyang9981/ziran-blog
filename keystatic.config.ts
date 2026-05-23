@@ -23,7 +23,7 @@ export default config({
   collections: {
     /* ── 技术文章 → content/blog/*.mdx ── */
     blog: collection({
-      label: "文章",
+      label: "见山（长文）",
       slugField: "title",
       path: "content/blog/*",
       format: { contentField: "content" },
@@ -79,7 +79,7 @@ export default config({
 
     /* ── 随笔（随想碎思）→ content/notes/*.mdx ── */
     notes: collection({
-      label: "随笔",
+      label: "从心（随笔）",
       slugField: "title",
       path: "content/notes/*",
       format: { contentField: "content" },
@@ -127,7 +127,7 @@ export default config({
 
     /* ── 读书 → content/reading/*.mdx ── */
     reading: collection({
-      label: "读书",
+      label: "观澜（书影）",
       slugField: "title",
       path: "content/reading/*",
       format: { contentField: "content" },
@@ -175,7 +175,7 @@ export default config({
 
     /* ── 生活 → content/life/*.mdx ── */
     life: collection({
-      label: "生活",
+      label: "止水（生活）",
       slugField: "title",
       path: "content/life/*",
       format: { contentField: "content" },

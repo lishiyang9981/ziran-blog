@@ -21,10 +21,14 @@ export default function AboutPage() {
             transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="flex-1"
           >
-            <p className="mb-3 text-xs tracking-[0.35em] text-zinc-600">ABOUT</p>
-            <h1 className="mb-8 bg-gradient-to-b from-white to-zinc-600 bg-clip-text text-6xl font-semibold tracking-tight text-transparent">
-              关于我们
+            <p className="mb-3 text-xs tracking-[0.35em] text-zinc-600">关于</p>
+            <h1 className="mb-4 bg-gradient-to-b from-white to-zinc-600 bg-clip-text text-6xl font-semibold tracking-tight text-transparent">
+              栖迟
             </h1>
+            <p className="mb-2 text-zinc-500">灵魂居所，生命状态与自我存照。</p>
+            <p className="mb-8 text-sm tracking-[0.2em]" style={{ color: "var(--accent)" }}>
+              归宿与本色
+            </p>
 <div className="space-y-5 text-[15px] leading-8">
 
   <div className="flex items-center text-zinc-400">

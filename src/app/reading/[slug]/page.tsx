@@ -42,7 +42,7 @@ export default async function ReadingDetail({ params }: Props) {
           href="/reading"
           className="mb-10 flex items-center gap-2 text-sm text-zinc-600 transition hover:text-white"
         >
-          ← 返回读书
+          ← 返回观澜
         </Link>
 
         {item.draft && <DraftNotice />}
@@ -106,7 +106,7 @@ export default async function ReadingDetail({ params }: Props) {
             href="/reading"
             className="text-sm text-zinc-600 transition hover:text-white"
           >
-            ← 所有读书
+            ← 所有观澜
           </Link>
         </div>
 

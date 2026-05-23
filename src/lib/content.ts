@@ -18,10 +18,10 @@ export const SECTIONS: {
   label: string;
   coverBase?: string;
 }[] = [
-  { key: "blog",    dir: "content/blog",    base: "/blog",    label: "文章", coverBase: "/images/blog/covers" },
-  { key: "notes",   dir: "content/notes",   base: "/notes",   label: "随笔" },
-  { key: "reading", dir: "content/reading", base: "/reading", label: "读书", coverBase: "/images/reading/covers" },
-  { key: "life",    dir: "content/life",    base: "/life",    label: "生活", coverBase: "/images/life/covers" },
+  { key: "blog",    dir: "content/blog",    base: "/blog",    label: "见山", coverBase: "/images/blog/covers" },
+  { key: "notes",   dir: "content/notes",   base: "/notes",   label: "从心" },
+  { key: "reading", dir: "content/reading", base: "/reading", label: "观澜", coverBase: "/images/reading/covers" },
+  { key: "life",    dir: "content/life",    base: "/life",    label: "止水", coverBase: "/images/life/covers" },
 ];
 
 export type Entry = {

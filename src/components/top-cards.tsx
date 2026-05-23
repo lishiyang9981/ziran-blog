@@ -6,8 +6,8 @@ import { FileText, Feather, BookOpen, Coffee } from "lucide-react";
 
 const CARDS = [
   {
-    title: "文章",
-    desc: "技术、哲学与认知的长文",
+    title: "见山",
+    desc: "打破表象的系统思辨",
     icon: FileText,
     glow: "from-blue-500/20 to-cyan-500/10",
     iconBg: "from-blue-500/30 to-cyan-500/20",
@@ -15,8 +15,8 @@ const CARDS = [
     href: "/blog",
   },
   {
-    title: "随笔",
-    desc: "随想、碎念与灵感片段",
+    title: "从心",
+    desc: "随风而动的灵感碎念",
     icon: Feather,
     glow: "from-purple-500/20 to-fuchsia-500/10",
     iconBg: "from-purple-500/30 to-fuchsia-500/20",
@@ -24,8 +24,8 @@ const CARDS = [
     href: "/notes",
   },
   {
-    title: "读书",
-    desc: "读过的书与记下的思考",
+    title: "观澜",
+    desc: "借镜他人光影的观察",
     icon: BookOpen,
     glow: "from-amber-500/20 to-orange-500/10",
     iconBg: "from-amber-500/30 to-orange-500/20",
@@ -33,8 +33,8 @@ const CARDS = [
     href: "/reading",
   },
   {
-    title: "生活",
-    desc: "日常、行走与生活记录",
+    title: "止水",
+    desc: "柴米油盐里的日常定力",
     icon: Coffee,
     glow: "from-rose-500/20 to-pink-500/10",
     iconBg: "from-rose-500/30 to-pink-500/20",

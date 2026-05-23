@@ -31,7 +31,7 @@ export function ContentSection({ posts, reading }: { posts: Post[]; reading: Rea
         className="card-item rounded-[28px] border border-white/[0.07] bg-white/[0.02] p-8 backdrop-blur"
       >
         <div className="mb-7 flex items-center justify-between">
-          <h2 className="text-[22px] font-semibold text-white">近期文章</h2>
+          <h2 className="text-[22px] font-semibold text-white">见山</h2>
           <Link href="/blog" className="text-sm text-zinc-500 transition hover:text-white">
             查看全部 →
           </Link>
@@ -91,13 +91,13 @@ export function ContentSection({ posts, reading }: { posts: Post[]; reading: Rea
         </div>
       </motion.div>
 
-      {/* ── 近期读书 ─────────────────────────── */}
+      {/* ── 观澜（近作）─────────────────────────── */}
       <motion.div
         {...FADE(0.1)}
         className="card-item overflow-hidden rounded-[28px] border border-white/[0.07] bg-white/[0.02] p-8 backdrop-blur"
       >
         <div className="mb-7 flex items-center justify-between">
-          <h2 className="text-[22px] font-semibold text-white">近期读书</h2>
+          <h2 className="text-[22px] font-semibold text-white">观澜</h2>
           <Link href="/reading" className="text-sm text-zinc-500 transition hover:text-white">
             查看全部 →
           </Link>
@@ -123,13 +123,13 @@ export function ContentSection({ posts, reading }: { posts: Post[]; reading: Rea
           ))}
           {reading.length === 0 && (
             <p className="py-10 text-center text-sm text-zinc-600">
-              还没有读书记录
+              观澜还空着
             </p>
           )}
         </div>
 
         <Link href="/reading" className="mt-4 block text-center text-xs text-zinc-600 transition hover:text-zinc-400">
-          更多读书笔记 →
+          更多观澜 →
         </Link>
       </motion.div>
 

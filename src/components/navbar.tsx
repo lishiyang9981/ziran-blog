@@ -9,11 +9,11 @@ import { NavActions } from "@/components/nav-actions";
 
 const NAV_ITEMS = [
   { label: "首页", href: "/" },
-  { label: "文章", href: "/blog" },
-  { label: "随笔", href: "/notes" },
-  { label: "读书", href: "/reading" },
-  { label: "生活", href: "/life" },
-  { label: "关于", href: "/about" },
+  { label: "见山", href: "/blog" },
+  { label: "从心", href: "/notes" },
+  { label: "观澜", href: "/reading" },
+  { label: "止水", href: "/life" },
+  { label: "栖迟", href: "/about" },
 ];
 
 const THEMES = [

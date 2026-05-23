@@ -21,8 +21,8 @@ export function LearningLog({ notes }: { notes: Note[] }) {
         {/* Header */}
         <div className="mb-7 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <h2 className="text-[22px] font-semibold text-white">随笔</h2>
-            <span className="text-xs text-zinc-600">· 随想碎思</span>
+            <h2 className="text-[22px] font-semibold text-white">从心</h2>
+            <span className="text-xs text-zinc-600">· 灵感碎念</span>
           </div>
           <div className="flex items-center gap-3">
             <Link

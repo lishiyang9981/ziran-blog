@@ -23,11 +23,14 @@ export default function NotesPage() {
       <div className="relative z-10 mx-auto max-w-4xl px-8 pb-24 pt-32">
 
         <div className="mb-16">
-          <p className="mb-3 text-xs tracking-[0.35em] text-zinc-600">NOTES</p>
+          <p className="mb-3 text-xs tracking-[0.35em] text-zinc-600">随笔</p>
           <h1 className="bg-gradient-to-b from-white to-zinc-500 bg-clip-text text-6xl font-semibold tracking-tight text-transparent">
-            学习日志
+            从心
           </h1>
-          <p className="mt-4 text-zinc-500">记录每一次学习、阅读与思考的碎片。</p>
+          <p className="mt-4 text-zinc-500">无拘无束，随风而动的灵感碎碎念。</p>
+          <p className="mt-3 text-sm tracking-[0.2em]" style={{ color: "var(--accent)" }}>
+            自由与灵性
+          </p>
         </div>
 
         <Paginated perPage={8} className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -59,7 +62,7 @@ export default function NotesPage() {
 
         {notes.length === 0 && (
           <div className="card-item rounded-[24px] border border-white/[0.07] bg-white/[0.02] p-16 text-center backdrop-blur-sm">
-            <p className="text-zinc-600">还没有随笔，快去记录第一条吧。</p>
+            <p className="text-zinc-600">从心还空着，快去记录第一条吧。</p>
           </div>
         )}
       </div>

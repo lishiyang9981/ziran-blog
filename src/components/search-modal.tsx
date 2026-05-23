@@ -83,7 +83,7 @@ export function SearchModal({ items }: { items: ContentItem[] }) {
                 ref={inputRef}
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="搜索全站：文章、随笔、读书、生活、标签..."
+                placeholder="搜索：见山 / 从心 / 观澜 / 止水 / 标签…"
                 className="flex-1 bg-transparent text-sm text-white placeholder:text-zinc-600 outline-none"
               />
               <button

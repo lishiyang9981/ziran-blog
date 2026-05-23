@@ -92,7 +92,7 @@ export default async function PostPage({ params }: Props) {
           href="/blog"
           className="mb-10 flex items-center gap-2 text-sm text-zinc-600 transition hover:text-white"
         >
-          ← 返回文章列表
+          ← 返回见山
         </Link>
 
         {post.draft && <DraftNotice />}
@@ -178,7 +178,7 @@ export default async function PostPage({ params }: Props) {
             href="/blog"
             className="text-sm text-zinc-600 transition hover:text-white"
           >
-            ← 所有文章
+            ← 所有见山
           </Link>
         </div>
 
