@@ -22,17 +22,32 @@ export default function AboutPage() {
             className="flex-1"
           >
             <p className="mb-3 text-xs tracking-[0.35em] text-zinc-600">ABOUT</p>
-            <h1 className="mb-8 bg-gradient-to-b from-white to-zinc-500 bg-clip-text text-6xl font-semibold tracking-tight text-transparent">
+            <h1 className="mb-8 bg-gradient-to-b from-white to-zinc-600 bg-clip-text text-6xl font-semibold tracking-tight text-transparent">
               关于我们
             </h1>
-            <div className="space-y-5 text-[15px] leading-8 text-zinc-400">
-              <p>她: 热忱者 · 共鸣者 · ENFJ · 金 牛</p>
-              <p>他: 探索者 · 思考者 · INFP · 狮 子</p>
-              <p>
-                希望余生的我们，能修炼五样东西：扬在脸上的自信，长在心底的善良，
-                融进血里的骨气，清风拂面的温柔，刻进命里的坚强。
-              </p>
-            </div>
+<div className="space-y-5 text-[15px] leading-8">
+
+  <div className="flex items-center text-zinc-400">
+    <span className="w-12 text-zinc-400 tracking-[0.15em]">
+      CWR
+    </span>
+    <span>热忱者 · 共鸣者 · ENFJ · 金牛</span>
+  </div>
+
+  <div className="flex items-center text-zinc-400">
+    <span className="w-12 pl-[18px] text-zinc-400 tracking-[0.15em]">
+      L
+    </span>
+    <span>探索者 · 思考者 · INFP · 狮子</span>
+  </div>
+
+  <p className="text-zinc-400">
+    希望余生的我们，能修炼五样东西：
+    扬在脸上的自信，长在心底的善良，
+    融进血里的骨气，清风拂面的温柔，
+    刻进命里的坚强。
+  </p>
+</div>
           </motion.div>
 
           {/* 右侧：图片 */}
