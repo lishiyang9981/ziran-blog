@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Navbar } from "@/components/navbar";
 import { PinBadge } from "@/components/pin-badge";
 import { DraftBadge } from "@/components/draft-badge";
+import { Paginated } from "@/components/paginated";
 import { getAllNotes } from "@/lib/notes";
 
 export default function NotesPage() {
@@ -29,7 +30,7 @@ export default function NotesPage() {
           <p className="mt-4 text-zinc-500">记录每一次学习、阅读与思考的碎片。</p>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <Paginated perPage={8} className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {notes.map((note) => (
             <Link
               key={note.slug}
@@ -54,11 +55,11 @@ export default function NotesPage() {
               </div>
             </Link>
           ))}
-        </div>
+        </Paginated>
 
         {notes.length === 0 && (
           <div className="card-item rounded-[24px] border border-white/[0.07] bg-white/[0.02] p-16 text-center backdrop-blur-sm">
-            <p className="text-zinc-600">还没有日志，快去记录第一条吧。</p>
+            <p className="text-zinc-600">还没有随笔，快去记录第一条吧。</p>
           </div>
         )}
       </div>

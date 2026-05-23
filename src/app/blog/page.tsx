@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Navbar } from "@/components/navbar";
 import { PinBadge } from "@/components/pin-badge";
 import { DraftBadge } from "@/components/draft-badge";
+import { Paginated } from "@/components/paginated";
 import { getAllPosts } from "@/lib/posts";
 
 const COVER_GRADIENTS = [
@@ -41,7 +42,7 @@ export default function BlogPage() {
         </div>
 
         {/* Post list */}
-        <div className="space-y-4">
+        <Paginated perPage={8} className="space-y-4">
           {posts.map((post, i) => (
             <Link
               key={post.slug}
@@ -86,7 +87,7 @@ export default function BlogPage() {
               </div>
             </Link>
           ))}
-        </div>
+        </Paginated>
 
         {posts.length === 0 && (
           <div className="card-item rounded-[24px] border border-white/[0.07] bg-white/[0.02] p-16 text-center backdrop-blur-sm">

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Navbar } from "@/components/navbar";
 import { PinBadge } from "@/components/pin-badge";
 import { DraftBadge } from "@/components/draft-badge";
+import { Paginated } from "@/components/paginated";
 import { getAllLife } from "@/lib/life";
 
 export default function LifePage() {
@@ -28,7 +29,7 @@ export default function LifePage() {
           <p className="mt-4 text-zinc-500">日常、行走与生活里那些细碎的好。</p>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <Paginated perPage={8} className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {items.map((item) => (
             <Link
               key={item.slug}
@@ -68,7 +69,7 @@ export default function LifePage() {
               </div>
             </Link>
           ))}
-        </div>
+        </Paginated>
 
         {items.length === 0 && (
           <div className="card-item rounded-[24px] border border-white/[0.07] bg-white/[0.02] p-16 text-center backdrop-blur-sm">
