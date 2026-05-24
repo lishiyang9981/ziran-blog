@@ -30,7 +30,7 @@ export default function AboutPage() {
               归宿与本色
             </p>
             <p className="mb-9 max-w-md text-[15px] leading-8 text-zinc-400">
-              这里是「栖迟」，也是我在网络世界里为自己留的一处歇脚亭。走过见山、观澜、从心、止水，在此停驻。我是 CWR&amp;L，幸会，同路人～
+              这里是「栖迟」，也是我在网络世界里为自己留的一处歇脚亭。走过见山、观澜、从心、止水，在此停驻。我是 CWR&amp;L，长歌有和，独行有灯，幸会，同路人～
             </p>
 <div className="space-y-5 text-[15px] leading-8">
 

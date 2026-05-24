@@ -40,7 +40,7 @@ export function TimelineSection() {
               CWR&amp;L
             </p>
             <p className="mt-1 text-xs text-zinc-600">
-              在自然、思考与生活之间
+              热爱可抵岁月漫长
             </p>
           </div>
           <p className="text-xs text-zinc-600">
