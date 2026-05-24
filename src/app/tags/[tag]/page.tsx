@@ -8,7 +8,9 @@ type Props = {
 };
 
 export function generateStaticParams() {
-  return getAllTags().map(({ tag }) => ({ tag: encodeURIComponent(tag) }));
+  // 返回原始(解码)标签，由 Next 负责编码成静态路径；
+  // 若返回 encodeURIComponent 会导致二次编码，中文标签访问时 404
+  return getAllTags().map(({ tag }) => ({ tag }));
 }
 
 export default async function TagPage({ params }: Props) {
