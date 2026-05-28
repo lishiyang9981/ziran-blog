@@ -25,7 +25,6 @@ const run = promisify(execFile);
 const ROOT = process.cwd();
 const WATCH_DIRS = ["content", "public/images"];
 const DEBOUNCE_MS = Number(process.env.AUTOSYNC_DEBOUNCE ?? 6000);
-const BRANCH = process.env.AUTOSYNC_BRANCH ?? "main";
 const DRY_RUN = process.env.AUTOSYNC_DRY_RUN === "1";
 
 const log = (...a) => console.log("\x1b[36m[autosync]\x1b[0m", ...a);
@@ -62,11 +61,16 @@ async function sync() {
       return;
     }
 
+    const branch =
+      process.env.AUTOSYNC_BRANCH ||
+      (await git(["rev-parse", "--abbrev-ref", "HEAD"])).trim();
+
     await git(["add", "--", ...WATCH_DIRS]);
-    await git(["commit", "-m", msg]);
+    // 限定 pathspec，避免把用户其它已暂存的改动一起带提交
+    await git(["commit", "-m", msg, "--", ...WATCH_DIRS]);
     log("已提交：", msg);
-    await git(["push", "origin", BRANCH]);
-    log(`已推送到 origin/${BRANCH} ✓`);
+    await git(["push", "origin", branch]);
+    log(`已推送到 origin/${branch} ✓`);
   } catch (e) {
     err("同步失败：", (e.stderr || e.message || e).toString().trim());
     err("（本地提交可能已生成，下次变动会一并推送；也可手动 git push）");
@@ -82,7 +86,7 @@ function schedule() {
 }
 
 log(
-  `开始监听 ${WATCH_DIRS.join("、")}/（防抖 ${DEBOUNCE_MS}ms，分支 ${BRANCH}` +
+  `开始监听 ${WATCH_DIRS.join("、")}/（防抖 ${DEBOUNCE_MS}ms，分支 ${process.env.AUTOSYNC_BRANCH ?? "当前分支"}` +
     (DRY_RUN ? "，演练模式" : "") +
     "）"
 );

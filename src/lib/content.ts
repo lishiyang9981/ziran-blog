@@ -107,10 +107,13 @@ export function loadEntry(
   slug: string,
   opts: LoadOpts = {}
 ): EntryWithContent | null {
-  const full = path.join(process.cwd(), relDir, `${slug}.mdx`);
-  if (!fs.existsSync(full)) return null;
+  // 列表支持 .mdx/.md，详情也两者都试，避免 .md 内容列表可见但详情 404
+  const fileName = [`${slug}.mdx`, `${slug}.md`].find((f) =>
+    fs.existsSync(path.join(process.cwd(), relDir, f))
+  );
+  if (!fileName) return null;
   const includeDrafts = opts.includeDrafts ?? isDev;
-  const entry = readEntry(relDir, `${slug}.mdx`, opts.coverBase);
+  const entry = readEntry(relDir, fileName, opts.coverBase);
   if (entry.draft && !includeDrafts) return null; // 草稿在线上视作不存在 → 404
   return entry;
 }

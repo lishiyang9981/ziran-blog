@@ -7,14 +7,13 @@
      pnpm save                 # 自动生成提交信息（含改动文件名+时间）
      pnpm save 改了导航栏配色   # 用自定义提交信息
    可选环境变量：
-     SAVE_BRANCH=main          # 推送分支（默认 main）
+     SAVE_BRANCH=xxx           # 推送分支（默认=当前分支）
 ──────────────────────────────────────────────────────────── */
 
 import { execFileSync } from "node:child_process";
 import path from "node:path";
 
 const ROOT = process.cwd();
-const BRANCH = process.env.SAVE_BRANCH ?? "main";
 
 function git(args, opts = {}) {
   return execFileSync("git", args, { cwd: ROOT, ...opts });
@@ -36,10 +35,13 @@ try {
   const ts = new Date().toLocaleString("zh-CN", { hour12: false });
   const msg = custom || `更新 ${summary}（${ts}）`;
 
+  const branch =
+    process.env.SAVE_BRANCH || git(["rev-parse", "--abbrev-ref", "HEAD"]).toString().trim();
+
   git(["add", "-A"]);
   git(["commit", "-m", msg], { stdio: "inherit" });
-  git(["push", "origin", BRANCH], { stdio: "inherit" });
-  console.log(`\n✓ 已提交并推送到 origin/${BRANCH}：${msg}`);
+  git(["push", "origin", branch], { stdio: "inherit" });
+  console.log(`\n✓ 已提交并推送到 origin/${branch}：${msg}`);
 } catch (e) {
   console.error("\n保存失败：", (e.stderr || e.message || e).toString().trim());
   console.error("（可手动检查 git 状态后重试）");

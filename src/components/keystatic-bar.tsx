@@ -26,6 +26,7 @@ export function KeystaticBar() {
 
   return (
     <div className="fixed bottom-5 left-1/2 z-[100] flex -translate-x-1/2 items-center gap-1 rounded-full border border-zinc-700 bg-zinc-900/95 px-2 py-1.5 shadow-[0_8px_30px_rgba(0,0,0,0.45)] backdrop-blur">
+      {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- 故意整页跳转，离开 Keystatic 后台 SPA */}
       <a
         href="/"
         className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs text-zinc-300 transition hover:bg-white/10 hover:text-white"
@@ -36,6 +37,7 @@ export function KeystaticBar() {
       {articleHref && (
         <>
           <span className="h-4 w-px bg-zinc-700" />
+          {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- 故意整页跳转，离开 Keystatic 后台 SPA */}
           <a
             href={articleHref}
             className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs text-zinc-300 transition hover:bg-white/10 hover:text-white"
