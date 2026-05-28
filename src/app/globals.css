@@ -8,7 +8,7 @@
   --accent: rgb(168, 85, 247);
 }
 
-html {
+html[data-scroll-behavior="smooth"] {
   scroll-behavior: smooth;
 }
 

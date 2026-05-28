@@ -19,7 +19,7 @@ export default function RootLayout({
   const items = getAllContent();
 
   return (
-    <html lang="zh-CN" suppressHydrationWarning>
+    <html lang="zh-CN" data-scroll-behavior="smooth" suppressHydrationWarning>
       {/* 防闪烁：JS 加载前先读取主题 */}
       <head>
         <script
